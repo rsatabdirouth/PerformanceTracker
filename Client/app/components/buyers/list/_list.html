@@ -1,0 +1,166 @@
+﻿{{buyerlist.title}}
+Buyer List
+
+
+
+<div class="Container table table-striped">
+    <table>
+        <thead>
+            <tr>
+                <th>BuyerId</th>   
+                <th>BuyerCompany</th>   
+                <th>GeneratedDate</th>
+                <th>ProductLookingFor</th>
+                <th>ContactPerson</th>
+                <th>Designation</th>
+                <th>ContactNumber</th>
+                <th>AlternativeNumber</th>
+                <th>Email</th>
+                <th>Extension</th>
+                <th>SourceWebLink</th>
+                <th>Source</th>
+                <th>Status</th>
+                <th>Website</th>
+                <th>Priority</th>
+            </tr>
+
+        </thead>
+        <tbody ng-repeat="buyer in buyerlist.pagedPost">
+            
+          <tr>
+              <td>{{buyer.BuyerId}}</td>
+              <td>{{buyer.BuyerCompany}}</td>
+              <td>{{buyer.Date}}</td>
+              <td>{{buyer.ProductLookingFor}}</td>
+              <td>{{buyer.ContactPerson}}</td>
+              <td>{{buyer.designation.designation}}</td>
+              <td>{{buyer.ContactNumber}}</td>
+              <td>{{buyer.AlternativeNumber}}</td>
+              <td>{{buyer.Email}}</td>
+              <td>{{buyer.Extension}}</td>
+              <td>{{buyer.SourceWebLink}}</td>
+              <td>{{buyer.source.Source}}</td>
+              <td>{{buyer.Status.Status}}</td>
+              <td>{{buyer.website.WebsiteName}}</td>
+              <td>{{buyer.priority.Level}}</td>
+         </tr>
+
+        </tbody>
+
+    </table>
+
+   
+
+</div>
+<div>
+    <nav aria-label="...">
+        <ul class="pagination">
+            <li ng-class="buyerlist.currentPage == 1? 'disabled': ''">
+                <a href="javascript:" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <li ng-click="buyerlist.pageChange(page)" ng-repeat="page in buyerlist.pages" ng-class="buyerlist.currentPage == page ? 'active' : ''"><a href="javascript:">{{page}}</a></li>
+            <li ng-class="buyerlist.currentPage == buyerlist.pages.length ? 'disabled': ''">
+                <a href="javascript:" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+<div class="Container">
+    <h4>Sorting</h4>
+    <ng-form>
+        <div class="col-md-3">
+            <h4>SourceList</h4>
+            <select id="sourceid">
+                <option value="0" label="Please Select"></option>
+                <option ng-repeat="source in buyerlist.Source" value="{{Source.ID}}"
+                        ng-selected="{{ source.Selected == true }}">
+                    {{source.Source}}
+                </option>
+            </select>
+        </div>
+
+        <div class="col-md-3">
+            <h4>Productlist</h4>
+            <select id="productid">
+                <option value="0" label="Please select"></option>
+
+                <option ng-repeat="product in buyerlist.product" value="{{product.ID}}"
+                        ng-selected="{{ product.Selected == true }}">
+                    {{product.ProductName}}
+                </option>
+            </select>
+
+        </div>
+
+        <div  class="col-md-3">
+            <h4>MediumList</h4>
+            <select>
+               
+                <option  value="0" label="Please Select"></option>
+                <option ng-repeat="medium in buyerlist.CommunicationMedium"
+                        value="{{medium.ID}}" ng-selected="{{medium.Selected==true}}">
+                {{medium.Medium}}</option>
+            </select>
+
+        </div>
+
+        <div class="col-md-3">
+            <h4>StatusList</h4>
+            <select>
+
+                <option value="0" label="Please Select"></option>
+                <option ng-repeat="Status in buyerlist.Status"
+                        value="{{Status.ID}}" ng-selected="{{Status.Selected==true}}">
+                    {{Status.Status}}
+                </option>
+            </select>
+
+        </div>
+
+        <div class="col-md-3">
+            <h4>WebsiteLIst</h4>
+            <select>
+
+                <option value="0" label="Please Select"></option>
+                <option ng-repeat="web in buyerlist.web"
+                        value="{{web.ID}}" ng-selected="{{web.Selected==true}}">
+                    {{web.WebsiteName}}
+                </option>
+            </select>
+
+        </div>
+
+        <div class="col-md-3">
+            <h4>CommunicatorDesignation</h4>
+            <select>
+
+                <option value="0" label="Please Select"></option>
+                <option ng-repeat="followup in buyerlist.TransferredTo"
+                        value="{{followup.ID}}" ng-selected="{{followup.Selected==true}}">
+                    {{followup.FollowupBy}}
+                </option>
+            </select>
+
+        </div>
+        <div class="col-md-3">
+            <h4>Search by BuyerID </h4>
+            <input type="text" id=""/>
+        </div>
+        <div class="col-md-3">
+<h4>SearchByDate</h4>
+            <input type="date" id="date"/>
+        </div>
+       
+
+    </ng-form>
+    <div>
+        
+        <input type="submit" value="Search"/>
+        <button>Reset</button>
+    </div>
+</div>

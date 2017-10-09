@@ -2,18 +2,24 @@
     'use strict';
 
     angular
-        .module('app')
-        .controller('app', app);
+        .module('PerformanceTrackerApp')
+        .controller('mainCtrl', mainCtrl);
 
-    app.$inject = ['$location']; 
+    mainCtrl.$inject = ['$rootScope'];
 
-    function app($location) {
+    function mainCtrl($rootScope) {
+        $rootScope.title = "Performance Tracker";
+        console.log("test1");
         /* jshint validthis:true */
         var vm = this;
-        vm.title = 'app';
 
+        vm.page = "Main page";
+       // alert("test");
         activate();
 
         function activate() { }
     }
 })();
+
+
+

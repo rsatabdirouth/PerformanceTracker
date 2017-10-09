@@ -1,0 +1,89 @@
+﻿{{communication.title}}
+<table>
+    <thead>
+        <tr>
+            <th>BuyerName</th>
+            <th>BuyerID</th>
+            <th>CommunicationID</th>
+            <th>FirstDateOfInteraction</th>
+            <th>CommunicatedBy</th>
+            <th>FeedBack</th>
+            <th>Isinterested</th>
+            <th>NextStep</th>
+            <th>LevelTransferredTo</th>
+            <th>NextFollowUpDate</th>
+            <th>IsConverted</th>
+            <th>CommunicationMedium</th>
+    
+            
+        </tr>
+    </thead>
+    <tbody ng-repeat="communicate in communication.pagedPost">
+        <tr>
+            <td>{{communicate.buyer.BuyerCompany}}</td>
+            <td>{{communicate.BuyerID}}</td>
+            <td>{{communicate.CommunicationID}}</td>
+            <td>{{communicate.FirstDateOfInteraction}}</td>
+            <td>{{communicate.communicatedBy}}</td>
+            <td>{{communicate.Feedback}}</td>
+            <td>{{communicate.Isintersted}}</td>
+            <td>{{communicate.NextStep}}</td>
+            <td>{{communicate.communicatedto.FollowupBy}}</td>
+            <td>{{communicate.NextFollowUpDate}}</td>
+            <td>{{communicate.IsConverted}}</td>
+            <td>{{communicate.CommunicationVia}}</td>
+            
+           
+           
+     
+           
+        </tr>
+    </tbody>
+</table>
+
+<div>
+    <nav aria-label="...">
+        <ul class="pagination">
+            <li ng-class="communication.currentpage == 1? 'disabled': ''">
+                <a href="javascript:" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <li ng-click="communication.pageChange(page)" ng-repeat="page in communication.pages" ng-class="communication.currentpage == page ? 'active' : ''"><a href="javascript:">{{page}}</a></li>
+            <li ng-class="communication.currentpage == communication.pages.length ? 'disabled': ''">
+                <a href="javascript:" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+
+<h4>sorting</h4>
+
+<ng-form id="SortCommunication">
+    <div class="col-md-3">
+        <h4>CommunicatorDesignation</h4>
+        <select>
+
+            <option value="0" label="Please Select"></option>
+            <option ng-repeat="followup in communication.TransferredTo"
+                    value="{{followup.ID}}" ng-selected="{{followup.Selected==true}}">
+                {{followup.FollowupBy}}
+            </option>
+        </select>
+
+
+    </div>
+
+    <div class="col-md-3">
+      <h4>SearchByNextFollowupdate</h4>
+      <input type="date" id="nextfollowupdate" />
+    </div>  
+
+    <div>
+        <h4>Search By Converted</h4>
+
+    </div>
+</ng-form>
