@@ -16,6 +16,8 @@
         vm.product = [];
         vm.web = [];
 
+        vm.form = {};
+
 
         vm.pages = [];
         vm.Itemsperpage = 1;

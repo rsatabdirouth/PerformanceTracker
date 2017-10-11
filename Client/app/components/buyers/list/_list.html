@@ -3,7 +3,7 @@ Buyer List
 
 
 
-<div class="Container table table-striped">
+<div class="Container table table-striped"  style="overflow:scroll;">
     <table>
         <thead>
             <tr>
@@ -39,10 +39,10 @@ Buyer List
               <td>{{buyer.Email}}</td>
               <td>{{buyer.Extension}}</td>
               <td>{{buyer.SourceWebLink}}</td>
-              <td>{{buyer.source.Source}}</td>
+              <td>{{buyer.Source.Source}}</td>
               <td>{{buyer.Status.Status}}</td>
-              <td>{{buyer.website.WebsiteName}}</td>
-              <td>{{buyer.priority.Level}}</td>
+              <td>{{buyer.Website.WebsiteName}}</td>
+              <td>{{buyer.Priority.Level}}</td>
          </tr>
 
         </tbody>
@@ -72,7 +72,7 @@ Buyer List
 
 <div class="Container">
     <h4>Sorting</h4>
-    <ng-form>
+    <ng-form id="buyersort">
         <div class="col-md-3">
             <h4>SourceList</h4>
             <select id="sourceid">
@@ -161,6 +161,6 @@ Buyer List
     <div>
         
         <input type="submit" value="Search"/>
-        <button>Reset</button>
+        <button ng-click="buyerlist.form={}">Reset</button>
     </div>
 </div>

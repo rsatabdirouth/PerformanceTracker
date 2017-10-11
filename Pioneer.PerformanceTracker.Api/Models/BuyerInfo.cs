@@ -13,35 +13,35 @@ namespace Pioneer.PerformanceTracker.Api.Models
         [Key]
         public int BuyerId { get; set; }
         public DateTime Date { get; set; }
-        [ForeignKey("product")]
+        [ForeignKey("Product")]
         public int ProductLookingFor { get; set; }
         public string BuyerCompany { get; set; } = "";
         public string ContactPerson { get; set; } = "";
-        [ForeignKey("designation")]
+        [ForeignKey("BuyerDesignation")]
         public int ContactPersonDesignation { get; set; }
         public string ContactNumber { get; set; }
         public string AlternativeNumber { get; set; } = "";
         public string Email { get; set; } = "";
         public string Extension { get; set; } = "";
         public string SourceWebLink { get; set; } = "";
-        [ForeignKey("website")]
+        [ForeignKey("Website")]
         public int BuyerWebsiteName { get; set; }
-        [ForeignKey("source")]
+        [ForeignKey("Source")]
         public int BuyerSource { get; set; }
         [ForeignKey("Status")]
         public int BuyerStatus { get; set; }
-        [ForeignKey("priority")]
+        [ForeignKey("Priority")]
         public int BuyerPriority { get; set; }
 
 
 
 
         //navigation
-        public virtual Product product { get; set; }
-        public virtual BuyerDesignation designation { get; set; }
-        public virtual Website website { get; set; }
+        public virtual Product Product { get; set; }
+        public virtual BuyerDesignation BuyerDesignation { get; set; }
+        public virtual Website Website { get; set; }
         public virtual BuyerStatus Status { get; set; }
-        public virtual BuyerSource source { get; set; }
-        public virtual BuyerPriority priority { get; set; }
+        public virtual BuyerSource Source { get; set; }
+        public virtual BuyerPriority Priority { get; set; }
     }
 }

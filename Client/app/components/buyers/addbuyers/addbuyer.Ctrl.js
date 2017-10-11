@@ -2,13 +2,14 @@
     'use strict';
 
     angular
-        .module('app')
+        .module('PerformanceTrackerApp')
         .controller('addbuyer', addbuyer);
 
-    addbuyer.$inject = ['$location']; 
-
-    function addbuyer($location) {
+    addbuyer.$inject = ['$rootScope','$location']; 
+  //  alert("add Buyer");
+    function addbuyer($rootScope,$location) {
         /* jshint validthis:true */
+        $rootScope.title = "Add New Buyer";
         var vm = this;
         vm.title = 'addbuyer';
 

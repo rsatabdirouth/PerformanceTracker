@@ -1,0 +1,45 @@
+﻿
+
+<div class="Container">
+    <h4>
+        {{productlist.title}}
+    </h4>
+
+    <div class="col-md-6">
+        <table>
+            <thead>
+             <tr>
+                 <!--<th>
+                     ID
+                 </th>-->
+                 <th>
+                     Product Name
+                 </th>
+             </tr>
+            </thead>
+            <tbody ng-repeat="products in productlist.product">
+                <tr>
+                    <td>
+                        <a href="/#!/productdetails" {{products.ID}}>{{products.ProductName}}</a>
+                    <!--</td>
+                    <td>
+                        <a href="/#!/productdetails">{{products.ProductName}}</a>-->
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    </div>
+   
+    
+
+  
+<button>
+    <a href="/#!/productdetails">AddProduct</a>
+
+</button>
+   
+
+

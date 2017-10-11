@@ -1,45 +1,47 @@
 ﻿{{communication.title}}
-<table>
-    <thead>
-        <tr>
-            <th>BuyerName</th>
-            <th>BuyerID</th>
-            <th>CommunicationID</th>
-            <th>FirstDateOfInteraction</th>
-            <th>CommunicatedBy</th>
-            <th>FeedBack</th>
-            <th>Isinterested</th>
-            <th>NextStep</th>
-            <th>LevelTransferredTo</th>
-            <th>NextFollowUpDate</th>
-            <th>IsConverted</th>
-            <th>CommunicationMedium</th>
-    
-            
-        </tr>
-    </thead>
-    <tbody ng-repeat="communicate in communication.pagedPost">
-        <tr>
-            <td>{{communicate.buyer.BuyerCompany}}</td>
-            <td>{{communicate.BuyerID}}</td>
-            <td>{{communicate.CommunicationID}}</td>
-            <td>{{communicate.FirstDateOfInteraction}}</td>
-            <td>{{communicate.communicatedBy}}</td>
-            <td>{{communicate.Feedback}}</td>
-            <td>{{communicate.Isintersted}}</td>
-            <td>{{communicate.NextStep}}</td>
-            <td>{{communicate.communicatedto.FollowupBy}}</td>
-            <td>{{communicate.NextFollowUpDate}}</td>
-            <td>{{communicate.IsConverted}}</td>
-            <td>{{communicate.CommunicationVia}}</td>
-            
-           
-           
-     
-           
-        </tr>
-    </tbody>
-</table>
+<div style="overflow:scroll;">
+    <table>
+        <thead>
+            <tr>
+                <th>BuyerName</th>
+                <th>BuyerID</th>
+                <th>CommunicationID</th>
+                <th>FirstDateOfInteraction</th>
+                <th>CommunicatedBy</th>
+                <th>FeedBack</th>
+                <th>Isinterested</th>
+                <th>NextStep</th>
+                <th>LevelTransferredTo</th>
+                <th>NextFollowUpDate</th>
+                <th>IsConverted</th>
+                <th>CommunicationMedium</th>
+
+
+            </tr>
+        </thead>
+        <tbody ng-repeat="communicate in communication.pagedPost">
+            <tr>
+                <td>{{communicate.buyer.BuyerCompany}}</td>
+                <td>{{communicate.BuyerID}}</td>
+                <td>{{communicate.CommunicationID}}</td>
+                <td>{{communicate.FirstDateOfInteraction}}</td>
+                <td>{{communicate.communicatedBy}}</td>
+                <td>{{communicate.Feedback}}</td>
+                <td>{{communicate.Isintersted}}</td>
+                <td>{{communicate.NextStep}}</td>
+                <td>{{communicate.communicatedto.FollowupBy}}</td>
+                <td>{{communicate.NextFollowUpDate}}</td>
+                <td>{{communicate.IsConverted}}</td>
+                <td>{{communicate.CommunicationVia}}</td>
+
+
+
+
+
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 <div>
     <nav aria-label="...">
@@ -62,7 +64,7 @@
 
 <h4>sorting</h4>
 
-<ng-form id="SortCommunication">
+<ng-form id="SortCommunication" class="Container">
     <div class="col-md-3">
         <h4>CommunicatorDesignation</h4>
         <select>
@@ -82,8 +84,54 @@
       <input type="date" id="nextfollowupdate" />
     </div>  
 
-    <div>
-        <h4>Search By Converted</h4>
+    <div class="col-md-3">
+        <h4>Converted</h4>
+        <select >
+            
+            <option value="0">False</option>
+            <option value="1">True</option>
+        </select>
+
+      
 
     </div>
-</ng-form>
+    <div class="col-md-3">
+        <h4>Search By Buyer ID</h4>
+        <input type="text" id="BuyerID" />
+    </div>
+    <div class="col-md-3">
+<h4>Search By Buyer Name</h4>
+        <input type="text" id="BuyerName"/>
+    </div>
+
+    <div class="col-md-3">
+        <h4>Is Buyer Interested</h4>
+        <select>
+
+            <option value="0">False</option>
+            <option value="1">True</option>
+        </select>
+</div>
+
+    <div class="col-md-3">
+        <h4>MediumList</h4>
+        <select>
+
+            <option value="0" label="Please Select"></option>
+            <option ng-repeat="medium in communication.Communicationmedium"
+                    value="{{medium.ID}}" ng-selected="{{medium.Selected==true}}">
+                {{medium.Medium}}
+            </option>
+        </select>
+
+    </div>
+
+    <div class="col-md-3">
+        <h4>Search By Communication Id </h4>
+        <input type="text" id="CommunicationId" />
+    </div>
+</ng-form> 
+<div>
+    <button type="submit">Search</button>
+    <button type="reset">Reset</button>
+</div>

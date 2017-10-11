@@ -10,12 +10,16 @@ using System.Web.Http.Cors;
 
 namespace Pioneer.PerformanceTracker.Api.Controllers
 {
+
     [EnableCors("*","*","*")]
     public class BuyersController : ApiController
     {
-
-       
-    [HttpGet]
+        public BuyersController()
+        { }
+        public static int Id = 1;
+        SalesContext _db = new SalesContext();
+//get list of all buyers
+        [HttpGet]
         public IHttpActionResult GetBuyers()
         {
             try
@@ -46,9 +50,7 @@ namespace Pioneer.PerformanceTracker.Api.Controllers
                     Priority = Priority,
 
                 };
-                
-              //  t.buyerSource = 0;
-              //  t.BuyerSourcess = 0;
+             
                 return Ok(SalesData);
             }
             
@@ -58,9 +60,65 @@ namespace Pioneer.PerformanceTracker.Api.Controllers
             }
 
         }
+        //get buyers by id * get a single buyer
+        [HttpGet]
+        public IHttpActionResult GetBuyersById(int id)
+        {
+            try
+            {
+                var buyer = _db.BuyerInfos.FirstOrDefault(x => x.BuyerId == id);
+                return Ok(buyer);
 
+            }
+            catch (Exception exception)
+            {
+                return InternalServerError(exception);
+
+            }
+        }
+             
+            [HttpPost]
+        public IHttpActionResult SaveBuyer(BuyerInfo buyer)
+        {
+            try
+            {
+                if (buyer.BuyerId > 0)
+                {
+                    var existBuyer = _db.BuyerInfos.FirstOrDefault(x => x.BuyerId == buyer.BuyerId);
+                    existBuyer.AlternativeNumber = buyer.AlternativeNumber;
+                    existBuyer.BuyerCompany = buyer.BuyerCompany;
+                    existBuyer.ContactPersonDesignation = buyer.ContactPersonDesignation;
+                    existBuyer.BuyerPriority = buyer.BuyerPriority;
+                    existBuyer.BuyerSource = buyer.BuyerSource;
+                    existBuyer.BuyerStatus = buyer.BuyerStatus;
+                    existBuyer.BuyerWebsiteName = buyer.BuyerWebsiteName;
+                    existBuyer.ContactNumber = buyer.ContactNumber;
+                    existBuyer.ContactPerson = buyer.ContactPerson;
+                    existBuyer.ContactPersonDesignation = buyer.ContactPersonDesignation;
+                    existBuyer.Date = buyer.Date;
+                    existBuyer.Email = buyer.Email;
+                    existBuyer.Extension = buyer.Extension;
+                    existBuyer.SourceWebLink = buyer.SourceWebLink;
+                    existBuyer.Website = buyer.Website;
+                    existBuyer.ProductLookingFor = buyer.ProductLookingFor;
+                }
+                else
+                {
+                    buyer.BuyerId= Id++;
+                    buyer.Date = DateTime.Now;
+                    _db.BuyerInfos.Add(buyer);
+                    _db.SaveChanges();
+                }
+                return Ok(buyer);
+            }
+            catch (Exception exception)
+            {
+                return InternalServerError(exception);
+            }
+
+        }
 
        
-        }
     }
+}
 

@@ -1,0 +1,52 @@
+﻿{{productdetails.title}}
+
+<!--<div ng-cloak>
+    <p>Id {{productdetails.existproduct.ID}}</p></br>
+    <p>{{productdetails.existproduct.ProductName}}</p></br>
+   
+</div>
+
+<table>
+    <tr>
+        <td>
+     <label>
+         <span>
+             ID
+         </span>
+     </label>
+        </td>
+       
+
+    </tr>
+    <tr>
+        <td>
+            <label>
+                <span>
+                    ProductName
+                </span>
+            </label>
+        </td>
+        <td>
+            <input type="text" ng-model="productdetails.existproduct.ProductName" />
+        </td>
+
+    </tr>
+</table>
+<button ng-click="productdetails.SaveProduct()"> Save</button>
+<button ng-click="productdetails.existproduct= {}"> Reset</button>
+
+<a href="/#!/productlists">Back</a>-->
+
+
+<div ng-cloak>
+    {{productdetails.product.ID}}
+   {{productdetails.product.ProductName}}
+</div>
+<label>Name</label>
+<input type="text" ng-model="productdetails.product.ProductName" />
+
+<button ng-click="productdetails.SaveProduct()"> Save</button>
+<button ng-click="productdetails.buyer= {}"> Reset</button>
+<a href="/#!/productlists">Back</a>
+
+

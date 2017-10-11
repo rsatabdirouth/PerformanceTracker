@@ -13,6 +13,7 @@
         var vm = this;
         vm.title = 'communicationlist';
         vm.TransferredTo = [];
+        vm.Communicationmedium = [];
        // alert("communication");
         activate();
         vm.Communicationlist = [];
@@ -43,6 +44,8 @@
                     console.log("length", vm.totalItems);
                     vm.totalpages = Math.ceil(vm.totalItems /  vm.countPerPage );
                     console.log(" vm.totalpages", vm.totalpages);
+                    vm.Communicationmedium = res.data.CommunicationMedium;
+                    console.log("jkhkjhkj",vm.Communicationmedium);
 
                     for (var i = 1; i <= vm.totalpages; i++)
                     {
