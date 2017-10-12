@@ -1,10 +1,35 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-	<meta charset="utf-8" />
-</head>
-<body>
+﻿{{level.title}}
+<div class="Container">
+    <div class="col-md-6">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Level</th>
+                </tr>
+            </thead>
+            <tbody ng-repeat="x in level.levels">
+                <tr>
+                    <td>{{x.ID}}</td>
+                    <td><a href="/#!/mediumslist/{{x.ID}}">{{x.FollowupBy}}</a></td>
+                </tr>
+            </tbody>
+        </table>
+        <!--<button><a href="/#!/mediumslist/">Addmedium</a></button>-->
+        <button><a href="/">Back</a></button>
+    </div>
 
-</body>
-</html>
+    <div class="col-md-6">
+        <div ng-cloak>
+            <p>Id :{{level.level.ID}}</p></br>
+            <p>Medium:{{level.level.FollowupBy}}</p></br>
+
+        </div>
+        <input type="text" ng-model="level.level.FollowupBy" ng-required="true" />
+
+        <button ng-click="level.SaveLevels()">Save</button>
+        <button ng-click="level.level={}">Refresh</button>
+    </div>
+
+</div>
+

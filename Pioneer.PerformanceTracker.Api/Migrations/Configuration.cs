@@ -31,7 +31,8 @@ namespace Pioneer.PerformanceTracker.Api.Migrations
 
             //  var  ID = 1;
            // context.BuyerSources.Add(new BuyerSource() { ID = 1, Source = "msn" });
-          context.Products.AddOrUpdate(new Product() { ID = 1, ProductName = "Mortgage" });
+          context.Products.Add(new Product() { ID = 1, ProductName = "Mortgage" });
+            context.Products.Add(new Product() { ID = 2,ProductName="Loan"});
           context.BuyerPriorities.Add(new BuyerPriority() { ID = 1, Level = "Normal" });
           context.BuyerSources.Add(new BuyerSource() { ID=1,Source="google"});
           context.BuyerStatus.Add(new BuyerStatus() { ID=1,Status="interested"});

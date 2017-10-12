@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using Pioneer.PerformanceTracker.Api.Models;
+using Pioneer.PerformanceTracker.Api.ViewModels;
 
 namespace Pioneer.PerformanceTracker.Api.Controllers
 {
@@ -25,7 +26,12 @@ namespace Pioneer.PerformanceTracker.Api.Controllers
             {
                 SalesContext _db = new SalesContext();
                 var sources = _db.BuyerSources.ToList();
-                return Ok(sources);
+                var SalesData = new SalesData() {
+                    Source = sources
+                    
+                };
+                return Ok(SalesData);
+
 
 
             }

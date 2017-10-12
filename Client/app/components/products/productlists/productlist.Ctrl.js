@@ -19,7 +19,10 @@
         activate();
 
         function activate() {
-            mainService.GetProducts().then(function (response) { vm.product = response.data.product; console.log(vm.product); }, function (error) { console.log(error); });
+      
+            mainService.GetProducts().then(
+                function (response) { vm.product = response.data.product; console.log(vm.product); },
+                function (error) { console.log(error); });
 
         }
     }

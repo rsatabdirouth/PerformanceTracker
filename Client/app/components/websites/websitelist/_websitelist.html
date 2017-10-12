@@ -1,0 +1,41 @@
+﻿{{websitelist.title}}
+
+<div class="Container">
+    <div class="col-md-6">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>WebsiteName</th>
+                </tr>
+            </thead>
+            <tbody ng-repeat="web in websitelist.websites">
+                <tr>
+                    <td>{{web.ID}}</td>
+                    <td>{{web.WebsiteName}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <button>
+            <a href="/">
+               back
+            </a>
+        </button>
+    </div>
+    <div class="col-md-6">
+       
+
+        <div ng-cloak>
+            <p>Id {{websitelist.website.ID}}</p></br>
+            <p>Website:{{websitelist.website.WebsiteName}}</p></br>
+            
+        </div>
+
+    <input type="text" ng-model="websitelist.website.Websitename" />
+
+       <button ng-click="websitelist.SaveWebsites()">Save</button>
+        <button ng-click="websitelist.website={}">Refresh</button>
+    </div>
+
+</div>
+

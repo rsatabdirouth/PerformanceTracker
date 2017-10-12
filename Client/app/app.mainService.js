@@ -11,17 +11,17 @@
         var service = this;
        
 
-        service.getMedium = getMedium;
+       
 
         //Operation on buyers
         service.getBuyers = getBuyers;
         service.GetBuyerById = GetBuyerById;
-        service.SaveBuyers = SaveBuyers;
+       // service.SaveBuyers = SaveBuyers;
 
         //Operation on communications
         service.GetCommunications = GetCommunications;
         service.GetCommunicationById = GetCommunicationById;
-        service.SaveCommunications = SaveCommunications;
+       // service.SaveCommunications = SaveCommunications;
 
         //Operation on levels
         service.GetLevels = GetLevels;
@@ -42,9 +42,9 @@
         
 
         //Opertation on source
-        service.GetSource = GetSource;
+        service.GetSources = GetSources;
         service.GetSourceById = GetSourceById;
-        service.SaveSources = saveSources;
+        service.SaveSources = SaveSources;
 
         //Operation on websites
         service.GetWebsites = GetWebsites;
@@ -64,77 +64,89 @@
             url: 'http://localhost:8057/api/Buyers/GetBuyers'
             });
         }
-        function GetBuyerById() { }
-        function SaveBuyers(){}
+        function GetBuyerById(id) {
+            $http({
+                method: 'GET',
+                url: 'http://localhost:8057/api/Buyers/GetBuyerById',
+                params: {id : id}
+                });
+        }
+        function SaveBuyers(buyer) {
+            $http({
+                method: 'POST',
+                url: 'http://localhost:8057/api/Buyers/SaveBuyers',
+                params:buyer
+            });
+        }
 
         //communication function
         function GetCommunications() {
             $http({
                 method: 'GET',
-                url: 'http://localhost:8057/api/Sources/GetSources'
+                url: 'http://localhost:8057/api/Communications/GetCommunications'
             });
         }
         function GetCommunicationById(id) {
             $http({
                 method: 'GET',
-                url: 'http://localhost:8057/api/Sources/GetSourcesById',
+                url: 'http://localhost:8057/api/Communications/GetCommunicationById',
                 params: { id: id }
 
             });
         }
-        function SaveCommunications(source) {
+        function SaveCommunications(communication) {
             $http({
                 method: 'POST',
-                url: 'http://localhost:8057/api/Sources/SaveSources',
-                data: source
+                url: 'http://localhost:8057/api/Communications/SaveCommunications',
+                data: communication
 
             });
         }
 
         //level function
         function GetLevels() {
-            $http({
+         return   $http({
                 method: 'GET',
-                url: 'http://localhost:8057/api/Sources/GetSources'
+                url: 'http://localhost:8057/api/Levels/GetLevels'
             });
         }
         function GetLevelById(id) {
-            $http({
+         return   $http({
                 method: 'GET',
-                url: 'http://localhost:8057/api/Sources/GetSourcesById',
+                url: 'http://localhost:8057/api/Levels/GetLevelById',
                 params: { id: id }
 
             });
         }
-        function SaveLevels(source) {
-            $http({
+        function SaveLevels(level) {
+         return   $http({
                 method: 'POST',
-                url: 'http://localhost:8057/api/Sources/SaveSources',
-                data: source
+                url: 'http://localhost:8057/api/Levels/SaveLevels',
+                data: level
 
             });
         }
 
-        //medium function
+       // medium function
         function GetMediums() {
-            $http({
+            return $http({
                 method: 'GET',
-                url: 'http://localhost:8057/api/Sources/GetSources'
+                url: 'http://localhost:8057/api/Mediums/GetMediums'
             });
         }
         function GetMediumsById(id) {
-            $http({
+            return $http({
                 method: 'GET',
-                url: 'http://localhost:8057/api/Sources/GetSourcesById',
+                url: 'http://localhost:8057/api/Mediums/GetMediumsById',
                 params: { id: id }
 
             });
         }
-        function SaveMediums(source) {
-            $http({
+        function SaveMediums(medium) {
+            return $http({
                 method: 'POST',
-                url: 'http://localhost:8057/api/Sources/SaveSources',
-                data: source
+                url: 'http://localhost:8057/api/Mediums/SaveMediums',
+                data: medium
 
             });
         }
@@ -162,14 +174,14 @@
             });
         }
       //source function
-        function GetSource() {
-            $http({
+        function GetSources() {
+         return   $http({
                 method: 'GET',
                 url: 'http://localhost:8057/api/Sources/GetSources'
             });
         }
         function GetSourceById(id) {
-            $http({
+         return   $http({
                 method: 'GET',
                 url: 'http://localhost:8057/api/Sources/GetSourcesById',
                 params: {id:id}
@@ -177,33 +189,36 @@
             });
         }
         function SaveSources(source) {
-            $http({
+          return  $http({
                 method: 'POST',
                 url: 'http://localhost:8057/api/Sources/SaveSources',
                 data:source
 
             });
         }
-      //website function
+
+        //website function
         function GetWebsites() {
-            $http({
+         return   $http({
                 method: 'GET',
-                url: 'http://localhost:8057/api/Sources/GetSources'
+                url: 'http://localhost:8057/api/Websites/GetWebsites'
             });
+
+
         }
         function GetWebsiteById(id) {
-            $http({
+          return  $http({
                 method: 'GET',
-                url: 'http://localhost:8057/api/Sources/GetSourcesById',
+                url: 'http://localhost:8057/api/Websites/GetWebsiteById',
                 params: { id: id }
 
             });
         }
-        function SaveWebsites(source) {
-            $http({
+        function SaveWebsites(website) {
+       return     $http({
                 method: 'POST',
-                url: 'http://localhost:8057/api/Sources/SaveSources',
-                data: source
+                url: 'http://localhost:8057/api/Websites/SaveWebsites',
+                data: website
 
             });
         }

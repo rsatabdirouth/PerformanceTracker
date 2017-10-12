@@ -67,7 +67,7 @@ namespace Pioneer.PerformanceTracker.Api.Controllers
                 if (model.ID>0) {
                     var existProduct = _db.Products.FirstOrDefault(x => x.ID == model.ID);
                     existProduct.ProductName = model.ProductName;
-                    _db.SaveChanges();
+                   
                   
                     
                 }

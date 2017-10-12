@@ -39,9 +39,9 @@
 
         function SaveProduct() {
             mainService.SaveProducts(vm.product).then(function (res) {
-                vm.product = res.data;
+                vm.source = res.data;
                 console.log(res);
-                console.log("Saved data is ", vm.product);
+                console.log("Saved data is ", vm.source);
             }, function () { });
         }
 

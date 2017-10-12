@@ -1,1 +1,40 @@
 ﻿{{sourcelist.title}}
+<div class="Container">
+    <div class="col-md-6">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Source</th>
+                </tr>
+            </thead>
+            <tbody ng-repeat="source in sourcelist.sources ">
+                <tr>
+                    <td>{{source.ID}}</td>
+                    <td>{{source.Source}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="col-md-6">
+
+
+        <label>Id</label>
+        <label>SourceName</label>
+        <input type="text" ng-model="sourcelist.source.Source" />
+        <button ng-click="sourcelist.SaveSources()">Save</button>
+        <button ng-click="soucelist.source={}">Refresh</button>-->
+    
+
+        </div>
+        <div>
+            <button>
+                <a href="/">
+                    Back
+                </a>
+            </button>
+        </div>
+    </div>
+
+
