@@ -11,7 +11,7 @@
         /* jshint validthis:true */
         var vm = this;
         $rootScope.title = "levelCtrl";
-        alert("levelCtrl");
+       // alert("levelCtrl");
         vm.title = 'levelCtrl';
 
         vm.levels = [];
@@ -25,7 +25,7 @@
         function activate() {
             vm.levelId = $routeParams.levelId;
             if (vm.levelId > 0) {
-                GetLevelById(vm.levelId);
+                vm.GetLevelById(vm.levelId);
             }
             mainService.GetLevels().then(function (res) {
                 vm.levels = res.data;
@@ -47,6 +47,7 @@
                 vm.level = res.data;
                 console.log(res);
                 console.log("Savemediums is", vm.level);
+                activate();
             }, function () { });
         }
     }

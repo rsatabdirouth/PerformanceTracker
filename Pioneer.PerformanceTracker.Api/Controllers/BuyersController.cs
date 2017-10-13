@@ -10,8 +10,9 @@ using System.Web.Http.Cors;
 
 namespace Pioneer.PerformanceTracker.Api.Controllers
 {
+    [EnableCors("*", "*", "*")]
 
-    [EnableCors("*","*","*")]
+    
     public class BuyersController : ApiController
     {
         public BuyersController()
@@ -62,7 +63,7 @@ namespace Pioneer.PerformanceTracker.Api.Controllers
         }
         //get buyers by id * get a single buyer
         [HttpGet]
-        public IHttpActionResult GetBuyersById(int id)
+        public IHttpActionResult GetBuyerById(int id)
         {
             try
             {
@@ -78,11 +79,12 @@ namespace Pioneer.PerformanceTracker.Api.Controllers
         }
              
             [HttpPost]
-        public IHttpActionResult SaveBuyer(BuyerInfo buyer)
+        public IHttpActionResult SaveBuyers(BuyerInfo buyer)
         {
             try
             {
-                if (buyer.BuyerId > 0)
+              
+                    if (buyer.BuyerId>0)
                 {
                     var existBuyer = _db.BuyerInfos.FirstOrDefault(x => x.BuyerId == buyer.BuyerId);
                     existBuyer.AlternativeNumber = buyer.AlternativeNumber;
@@ -95,12 +97,14 @@ namespace Pioneer.PerformanceTracker.Api.Controllers
                     existBuyer.ContactNumber = buyer.ContactNumber;
                     existBuyer.ContactPerson = buyer.ContactPerson;
                     existBuyer.ContactPersonDesignation = buyer.ContactPersonDesignation;
-                    existBuyer.Date = buyer.Date;
+                  //  existBuyer.Date = buyer.Date;
                     existBuyer.Email = buyer.Email;
                     existBuyer.Extension = buyer.Extension;
                     existBuyer.SourceWebLink = buyer.SourceWebLink;
                     existBuyer.Website = buyer.Website;
                     existBuyer.ProductLookingFor = buyer.ProductLookingFor;
+                    _db.SaveChanges();
+                    return Ok (existBuyer);
                 }
                 else
                 {
@@ -108,8 +112,9 @@ namespace Pioneer.PerformanceTracker.Api.Controllers
                     buyer.Date = DateTime.Now;
                     _db.BuyerInfos.Add(buyer);
                     _db.SaveChanges();
+                    return Ok(buyer);
                 }
-                return Ok(buyer);
+               
             }
             catch (Exception exception)
             {
@@ -121,4 +126,7 @@ namespace Pioneer.PerformanceTracker.Api.Controllers
        
     }
 }
+
+
+   
 

@@ -8,21 +8,23 @@
                     <th>Level</th>
                 </tr>
             </thead>
-            <tbody ng-repeat="x in level.levels">
+            <tbody ng-repeat="level in level.levels">
                 <tr>
-                    <td>{{x.ID}}</td>
-                    <td><a href="/#!/mediumslist/{{x.ID}}">{{x.FollowupBy}}</a></td>
+                    <td>{{level.ID}}</td>
+                    <td><a href="/#!/levels/{{level.ID}}">
+                        {{level.FollowupBy}}
+                        </a></td>
                 </tr>
             </tbody>
         </table>
-        <!--<button><a href="/#!/mediumslist/">Addmedium</a></button>-->
+       
         <button><a href="/">Back</a></button>
     </div>
 
     <div class="col-md-6">
         <div ng-cloak>
             <p>Id :{{level.level.ID}}</p></br>
-            <p>Medium:{{level.level.FollowupBy}}</p></br>
+            <p>Level:{{level.level.FollowupBy}}</p></br>
 
         </div>
         <input type="text" ng-model="level.level.FollowupBy" ng-required="true" />

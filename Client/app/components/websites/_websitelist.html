@@ -12,7 +12,12 @@
             <tbody ng-repeat="web in websitelist.websites">
                 <tr>
                     <td>{{web.ID}}</td>
-                    <td>{{web.WebsiteName}}</td>
+             <td>
+                    <a href="/#!/websites/{{web.ID}}">
+                        {{web.WebsiteName}}
+                    </a>
+                    
+                   </td>
                 </tr>
             </tbody>
         </table>
@@ -31,11 +36,17 @@
             
         </div>
 
-    <input type="text" ng-model="websitelist.website.Websitename" />
+        <input
+    <input type="text" ng-model="websitelist.website.WebsiteName" />
+
+
+       
 
        <button ng-click="websitelist.SaveWebsites()">Save</button>
         <button ng-click="websitelist.website={}">Refresh</button>
     </div>
 
 </div>
+
+
 

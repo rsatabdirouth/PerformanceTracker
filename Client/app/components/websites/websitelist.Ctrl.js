@@ -6,9 +6,9 @@
         .module('PerformanceTrackerApp')
         .controller('websitelistCtrl', websitelistCtrl);
 
-    websitelistCtrl.$inject = ['$rootScope', '$location', 'mainService'];
+    websitelistCtrl.$inject = ['$rootScope','$routeParams', '$location', 'mainService'];
 
-    function websitelistCtrl($rootScope, $location, mainService) {
+    function websitelistCtrl($rootScope,$routeParams, $location, mainService) {
         /* jshint validthis:true */
         var vm = this;
         $rootScope.title = "websitelistCtrl";
@@ -25,7 +25,7 @@
         activate();
 
         function activate() {
-            vm.websiteId = $rootScope.websiteId
+            vm.websiteId = $routeParams.websiteId
             if (vm.websiteId > 0)
             {
                 vm.GetWebsiteById(vm.websiteId);
@@ -43,7 +43,8 @@
         }
         function SaveWebsites()
         {
-            mainService.SaveWebsites(vm.website).then(function (res) { vm.website = res.data; console.log("vm.website",vm.website);})
+            mainService.SaveWebsites(vm.website).then(function (res) { vm.website = res.data; console.log("vm.website", vm.website); });
+            activate();
         }
     }
 })();

@@ -52,6 +52,8 @@ namespace Pioneer.PerformanceTracker.Api.Controllers
                     SalesContext _db = new SalesContext();
                     var existweb = _db.Websites.FirstOrDefault(x => x.ID == model.ID);
                     existweb.WebsiteName = model.WebsiteName;
+                    _db.SaveChanges();
+                    return Ok(existweb);
 
 
                 }

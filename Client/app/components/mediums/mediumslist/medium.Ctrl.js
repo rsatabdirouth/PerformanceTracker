@@ -11,7 +11,7 @@
         /* jshint validthis:true */
         var vm = this;
         $rootScope.title = "medium";
-        alert("medium");
+     //   alert("medium");
         vm.title = 'medium';
 
         vm.mediums = [];
@@ -24,18 +24,22 @@
 
         function activate() {
             vm.mediumId = $routeParams.mediumId;
+         //   console.log("$routeParams.mediumId", $routeParams.mediumId);
             if(vm.mediumId>0)
             {
-                GetMediumsById(vm.mediumId);
+               vm.GetMediumsById(vm.mediumId);
             }
             mainService.GetMediums().then(function (res) { vm.mediums = res.data; console.log("vm.medium", vm.mediums) });
         }
+
+      
+
 
 
         function GetMediumsById() {
             mainService.GetMediumsById(vm.mediumId).then(function (res) {
                 vm.medium = res.data;
-                console.log("get buyer by id", vm.medium);
+                console.log("get medium by id", vm.medium);
             }, function () { });
         }
 
@@ -44,7 +48,8 @@
             mainService.SaveMediums(vm.medium).then(function (res) {
                 vm.medium = res.data;
                 console.log(res);
-                console.log("Savemediums is",vm.medium);
+                console.log("Savemediums is", vm.medium);
+                activate();
             }, function () { });
         }
     }

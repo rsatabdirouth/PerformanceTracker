@@ -10,8 +10,15 @@
             </thead>
             <tbody ng-repeat="x in medium.mediums">
                 <tr>
-                    <td>{{x.ID}}</td>
-                    <td><a href="/#!/mediumslist/{{buyer.Id}}">{{x.Medium}}</a></td>
+                    <td>
+                   {{x.ID}}
+                    </td>
+                    <td>
+                        <a href="/#!/mediumslist/{{x.ID}}">
+
+                  {{x.Medium}}
+                    </a>
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -25,7 +32,7 @@
             <p>Medium:{{medium.medium.Medium}}</p></br>
             
         </div>
-        <input type="text" ng-model="medium.medium.Medium" ng-required="true" />
+      Medium:  <input type="text" ng-model="medium.medium.Medium" ng-required="true" />
 
         <button ng-click="medium.SaveMediums()">Save</button>
         <button ng-click="medium.medium={}">Refresh</button>

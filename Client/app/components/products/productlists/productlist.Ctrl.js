@@ -12,16 +12,16 @@
         var vm = this;
         $rootScope.title = "ProductList";
         vm.title = 'productlist';
-        alert("Product");
+        //alert("Product");
 
-        vm.product = [];
+        vm.product = {};
 
         activate();
 
         function activate() {
       
             mainService.GetProducts().then(
-                function (response) { vm.product = response.data.product; console.log(vm.product); },
+                function (response) { vm.product = response.data.product; console.log("vm.product",vm.product); },
                 function (error) { console.log(error); });
 
         }

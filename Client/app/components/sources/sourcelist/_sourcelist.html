@@ -11,20 +11,32 @@
             <tbody ng-repeat="source in sourcelist.sources ">
                 <tr>
                     <td>{{source.ID}}</td>
-                    <td>{{source.Source}}</td>
+                    <td>
+                        <a href="/#!/sourcelist/{{source.ID}}">
+                        
+                                {{source.Source}}
+                            </a>
+
+                     
+
+                    </td>
                 </tr>
             </tbody>
         </table>
     </div>
 
     <div class="col-md-6">
-
+        <div>
+            {{sourcelist.source.ID}}
+            {{sourcelist.source.Source}}
+        </div>
+       
 
         <label>Id</label>
         <label>SourceName</label>
         <input type="text" ng-model="sourcelist.source.Source" />
         <button ng-click="sourcelist.SaveSources()">Save</button>
-        <button ng-click="soucelist.source={}">Refresh</button>-->
+        <button ng-click="soucelist.source={}">Refresh</button>
     
 
         </div>

@@ -17,9 +17,9 @@
      controller: 'communicationlist as communication'
  })
 
-.when('/addbuyers', {
-    templateUrl: './app/components/buyers/addbuyers/_addbuyers.html',
-    controller: 'addbuyer'
+.when("/buyerdetails/:buyerId?", {
+    templateUrl: './app/components/buyers/buyerdetails/_buyerdetails.html',
+    controller: 'buyerdetailsCtrl as buyerdetails'
 })
 
 .when('/productlists', { templateUrl: './app/components/products/productlists/_productlist.html', controller: 'productlistCtrl as productlist' })
@@ -32,16 +32,16 @@
 
 .when("/sourcelist/:sourceId?", { templateUrl: './app/components/sources/sourcelist/_sourcelist.html', controller: 'sourcelistCtrl as sourcelist' })
 
-.when('/websitelist', { templateUrl: './app/components/websites/websitelist/_websitelist.html', controller: 'websitelistCtrl as websitelist' })
+.when("/websites/:websiteId?", { templateUrl: './app/components/websites/_websitelist.html', controller: 'websitelistCtrl as websitelist' })
 
 
 
-.when("/mediumslist:mediumId?", {
+.when("/mediumslist/:mediumId?", {
     templateUrl: "./app/components/mediums/mediumslist/_medium.html",
     controller: "mediumCtrl as medium"
 })
 
-.when("/levels:levelId?", { templateUrl: "./app/components/levels/_level.html", controller: "levelCtrl as level" })
+.when("/levels/:levelId?", { templateUrl: "app/components/levels/_level.html", controller: "levelCtrl as level" })
 
         .otherwise({ redirectTo: '/' });
 

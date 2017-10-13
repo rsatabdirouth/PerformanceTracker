@@ -1,8 +1,8 @@
 ﻿
-
 <div class="Container">
     <h4>
         {{productlist.title}}
+        
     </h4>
 
     <div class="col-md-6">
@@ -13,18 +13,19 @@
                      ID
                  </th>-->
                  <th>
-                     Product Name
+                     Product Name 
                  </th>
              </tr>
             </thead>
             <tbody ng-repeat="products in productlist.product">
                 <tr>
                     <td>
-                        <a href="/#!/productdetails" {{products.ID}}>{{products.ProductName}}</a>
-                    <!--</td>
-                    <td>
-                        <a href="/#!/productdetails">{{products.ProductName}}</a>-->
-                    </td>
+                        <a href="/#!/productdetails/{{products.ID}}">
+                           
+                           {{products.ProductName}}
+                        </a>
+        
+</td>
                 </tr>
             </tbody>
         </table>

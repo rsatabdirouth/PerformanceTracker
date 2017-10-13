@@ -24,7 +24,9 @@
         active();
 
         function active() {
+            console.log("$routeParams", $routeParams);
             vm.productId = $routeParams.productId;
+            console.log("vm.productId", vm.productId);
             if (vm.productId > 0) {
                 GetProductById(vm.productId);
             }

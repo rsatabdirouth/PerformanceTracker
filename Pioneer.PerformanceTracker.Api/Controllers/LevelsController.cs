@@ -54,6 +54,8 @@ namespace Pioneer.PerformanceTracker.Api.Controllers
                 {
                     var existlevel = _db.TransferredTo.FirstOrDefault(x=>x.ID==model.ID);
                     existlevel.FollowupBy = model.FollowupBy;
+                    _db.SaveChanges();
+                    return Ok(existlevel);
                 }
                 else
                 {

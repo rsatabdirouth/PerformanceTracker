@@ -59,6 +59,8 @@ namespace Pioneer.PerformanceTracker.Api.Controllers
                 {
                     var existMedium = _db.CommunicationMediums.FirstOrDefault(x => x.ID == model.ID);
                     existMedium.Medium = model.Medium;
+                    _db.SaveChanges();
+                    return Ok(existMedium);
                 }
                 else
                 {

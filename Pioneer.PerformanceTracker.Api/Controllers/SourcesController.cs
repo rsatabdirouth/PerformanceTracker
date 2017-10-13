@@ -63,8 +63,8 @@ namespace Pioneer.PerformanceTracker.Api.Controllers
                     var existsources = _db.BuyerSources.FirstOrDefault(x => x.ID == model.ID);
                     existsources.ID = model.ID;
                     existsources.Source = model.Source;
-                    //_db.SaveChanges();
-                    //return Ok(existsources);
+                    _db.SaveChanges();
+                    return Ok(existsources);
 
 
                 }

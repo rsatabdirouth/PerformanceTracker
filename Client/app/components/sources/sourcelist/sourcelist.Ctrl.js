@@ -19,6 +19,7 @@
         vm.sourceId;
         vm.GetSourceById = GetSourceById;
         vm.SaveSources = SaveSources;
+     
 
 
 
@@ -28,7 +29,7 @@
       
             vm.sourceId = $routeParams.sourceId;
             if (vm.sourceId > 0) {
-                GetSourceById(vm.sourceId);
+              vm.GetSourceById(vm.sourceId);
             }
             mainService.GetSources().then(function (res) { vm.sources = res.data.Source; console.log("vm.sources", vm.sources); })
 
@@ -45,10 +46,14 @@
         function SaveSources() {
             mainService.SaveSources(vm.source).then(function (res) {
                 vm.source = res.data;
+                
+                active();
                 console.log(res);
                 console.log("Saved data is ", vm.source);
             }, function () { });
         }
+
+        
 
     }
 

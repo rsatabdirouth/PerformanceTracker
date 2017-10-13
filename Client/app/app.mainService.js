@@ -16,7 +16,7 @@
         //Operation on buyers
         service.getBuyers = getBuyers;
         service.GetBuyerById = GetBuyerById;
-       // service.SaveBuyers = SaveBuyers;
+        service.SaveBuyers = SaveBuyers;
 
         //Operation on communications
         service.GetCommunications = GetCommunications;
@@ -56,7 +56,7 @@
      
 
 
-       //buyer function
+        //buyer function
 
         function getBuyers() {
             return $http({
@@ -65,14 +65,14 @@
             });
         }
         function GetBuyerById(id) {
-            $http({
+         return  $http({
                 method: 'GET',
                 url: 'http://localhost:8057/api/Buyers/GetBuyerById',
                 params: {id : id}
                 });
         }
         function SaveBuyers(buyer) {
-            $http({
+        return  $http({
                 method: 'POST',
                 url: 'http://localhost:8057/api/Buyers/SaveBuyers',
                 params:buyer

@@ -62,8 +62,9 @@ namespace Pioneer.PerformanceTracker.Api.Controllers
                     existcommunication.FirstDateOfInteraction = model.FirstDateOfInteraction;
                     existcommunication.NextFollowUpDate = model.NextFollowUpDate;
                     existcommunication.NextStep = model.NextStep;
-              
 
+                    _db.SaveChanges();
+                    return Ok(existcommunication);
 
                 }
                 else {
