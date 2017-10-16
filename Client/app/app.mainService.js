@@ -21,7 +21,7 @@
         //Operation on communications
         service.GetCommunications = GetCommunications;
         service.GetCommunicationById = GetCommunicationById;
-       // service.SaveCommunications = SaveCommunications;
+        service.SaveCommunications = SaveCommunications;
 
         //Operation on levels
         service.GetLevels = GetLevels;
@@ -75,7 +75,7 @@
         return  $http({
                 method: 'POST',
                 url: 'http://localhost:8057/api/Buyers/SaveBuyers',
-                params:buyer
+                data:buyer
             });
         }
 

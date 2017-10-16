@@ -28,8 +28,8 @@ namespace Pioneer.PerformanceTracker.Api.Models
         public int BuyerWebsiteName { get; set; }
         [ForeignKey("Source")]
         public int BuyerSource { get; set; }
-        [ForeignKey("Status")]
-        public int BuyerStatus { get; set; }
+        
+        public bool IsBuyerInterested { get; set; }
         [ForeignKey("Priority")]
         public int BuyerPriority { get; set; }
 
@@ -40,7 +40,7 @@ namespace Pioneer.PerformanceTracker.Api.Models
         public virtual Product Product { get; set; }
         public virtual BuyerDesignation BuyerDesignation { get; set; }
         public virtual Website Website { get; set; }
-        public virtual BuyerStatus Status { get; set; }
+       
         public virtual BuyerSource Source { get; set; }
         public virtual BuyerPriority Priority { get; set; }
     }

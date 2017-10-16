@@ -21,7 +21,7 @@ namespace Pioneer.PerformanceTracker.Api.Models
         public DbSet<BuyerSource> BuyerSources { get; set; }
         
 
-        public DbSet<BuyerStatus> BuyerStatus { get; set; }
+        public DbSet<SalesStatus> SalesStatus { get; set; }
         public DbSet<CommunicationInfo> CommunicationInfos { get; set; }
         public DbSet<CommunicationMedium> CommunicationMediums { get; set; }
         public DbSet<Product> Products { get; set; }

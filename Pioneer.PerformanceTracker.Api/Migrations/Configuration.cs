@@ -35,7 +35,11 @@ namespace Pioneer.PerformanceTracker.Api.Migrations
             context.Products.Add(new Product() { ID = 2,ProductName="Loan"});
           context.BuyerPriorities.Add(new BuyerPriority() { ID = 1, Level = "Normal" });
           context.BuyerSources.Add(new BuyerSource() { ID=1,Source="google"});
-          context.BuyerStatus.Add(new BuyerStatus() { ID=1,Status="interested"});
+            context.SalesStatus.Add(new SalesStatus() { ID = 1, Status = "Interested" });
+            context.SalesStatus.Add(new SalesStatus() { ID = 2, Status = "Sales Brochure send" });
+
+
+
           context.CommunicationMediums.Add(new CommunicationMedium() { ID=1,Medium="Email"});
           context.TransferredTo.Add(new TransferredTo() { ID=1,FollowupBy="Prajim1"});
           context.BuyerDesignations.Add(new BuyerDesignation() { ID=1,designation="CEO"});
@@ -56,7 +60,7 @@ namespace Pioneer.PerformanceTracker.Api.Migrations
               ProductLookingFor =1,
               SourceWebLink ="123",
               BuyerPriority=1,
-              BuyerStatus=1
+              IsBuyerInterested = true
           });
 
 
@@ -72,7 +76,8 @@ namespace Pioneer.PerformanceTracker.Api.Migrations
                 NextStep="callback self after 2 days",
                 NextFollowUpDate = new DateTime(2017,09,22),
                 Isintersted=true,
-                IsConverted=false
+                IsConverted=false,
+                SalesStatus = 1
 
             });
         }

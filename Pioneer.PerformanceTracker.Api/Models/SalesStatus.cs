@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Pioneer.PerformanceTracker.Api.Models
 {
-    public class BuyerStatus
+    public class SalesStatus
     {
         [Key]
         public int ID { get; set; }

@@ -41,7 +41,9 @@
     controller: "mediumCtrl as medium"
 })
 
-.when("/levels/:levelId?", { templateUrl: "app/components/levels/_level.html", controller: "levelCtrl as level" })
+.when("/levels/:levelId?", { templateUrl: "./app/components/levels/_level.html", controller: "levelCtrl as level" })
+
+.when("/addcommunication/:communicationId?", { templateUrl: "./app/components/communications/addcommunication/_communication.html", controller: "communicationDetailsCtrl as communicationDetails" })
 
         .otherwise({ redirectTo: '/' });
 

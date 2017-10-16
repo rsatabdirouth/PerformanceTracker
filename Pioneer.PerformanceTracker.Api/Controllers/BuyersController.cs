@@ -31,7 +31,7 @@ namespace Pioneer.PerformanceTracker.Api.Controllers
                 var website = _db.Websites.ToList();
                 var Buyer = _db.BuyerInfos.ToList();
                 var buyerdesignation = _db.BuyerDesignations.ToList();
-                var status = _db.BuyerStatus.ToList();
+                var status = _db.SalesStatus.ToList();
                 var source = _db.BuyerSources.ToList();
                 var Communicationmedium = _db.CommunicationMediums.ToList();
                 var communicationinformation = _db.CommunicationInfos.ToList();
@@ -92,12 +92,12 @@ namespace Pioneer.PerformanceTracker.Api.Controllers
                     existBuyer.ContactPersonDesignation = buyer.ContactPersonDesignation;
                     existBuyer.BuyerPriority = buyer.BuyerPriority;
                     existBuyer.BuyerSource = buyer.BuyerSource;
-                    existBuyer.BuyerStatus = buyer.BuyerStatus;
+                    existBuyer.IsBuyerInterested = buyer.IsBuyerInterested;
                     existBuyer.BuyerWebsiteName = buyer.BuyerWebsiteName;
                     existBuyer.ContactNumber = buyer.ContactNumber;
                     existBuyer.ContactPerson = buyer.ContactPerson;
                     existBuyer.ContactPersonDesignation = buyer.ContactPersonDesignation;
-                  //  existBuyer.Date = buyer.Date;
+                    existBuyer.Date = buyer.Date;
                     existBuyer.Email = buyer.Email;
                     existBuyer.Extension = buyer.Extension;
                     existBuyer.SourceWebLink = buyer.SourceWebLink;
@@ -112,9 +112,9 @@ namespace Pioneer.PerformanceTracker.Api.Controllers
                     buyer.Date = DateTime.Now;
                     _db.BuyerInfos.Add(buyer);
                     _db.SaveChanges();
-                    return Ok(buyer);
+                   
                 }
-               
+                return Ok(buyer);
             }
             catch (Exception exception)
             {

@@ -23,6 +23,8 @@ namespace Pioneer.PerformanceTracker.Api.Models
         [ForeignKey("communicatedto")]
         public int TransferredTo { get; set; }
         public DateTime? NextFollowUpDate { get; set; }
+        [ForeignKey("Status")]
+        public int SalesStatus { get; set; }
         public bool IsConverted { get; set; }
 
 
@@ -30,5 +32,6 @@ namespace Pioneer.PerformanceTracker.Api.Models
         public virtual BuyerInfo buyer { get; set; }
         public virtual TransferredTo communicatedto { get; set; }
         public virtual CommunicationMedium medium { get; set; }
+        public virtual SalesStatus Status { get; set; }
     }
 }

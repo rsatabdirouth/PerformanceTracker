@@ -25,17 +25,19 @@
         </div>
 
         <div class="col-md-4">
-
             <label>Designation</label>
-            <select id="designation" ng-model="buyerdetails.buyer.ContactPersonDesignation">
-                <option value="0" label="Please select"></option>
+            <select id="designationid" ng-model="buyerdetails.buyer.ContactPersonDesignation">
+                <option ng-value="0" label="Please select"></option>
 
-                <option ng-repeat="designation in buyerdetails.designation" value="{{designation.ID}}"
-                        ng-selected="{{ designation.Selected == true }}" >
+                <option ng-repeat="designation in buyerdetails.designation" ng-value="designation.ID"
+                        ng-selected="{{ designation.Selected == true }}">
                     {{designation.designation}}
                 </option>
             </select>
+
         </div>
+
+        
         <div class="col-md-4">
             <label>ContactNumber</label>
             <input type="text" ng-model="buyerdetails.buyer.ContactNumber" id="contactNumber" name="contactNumber"/>
@@ -69,9 +71,9 @@
         <div class="col-md-4">
              <label>BuyerSource</label>
     <select id="sources" ng-model="buyerdetails.buyer.BuyerSource">
-        <option value="0" label="Please select"></option>
+        <option ng-value="0" label="Please select"></option>
 
-        <option ng-repeat="source in buyerdetails.sources" value="{{source.ID}}"
+        <option ng-repeat="source in buyerdetails.sources" ng-value="source.ID"
                 ng-selected="{{ source.Selected == true }}">
             {{source.Source}}
         </option>
@@ -83,11 +85,11 @@
 
             <label>BuyerPriority</label>
             <select id="productid" ng-model="buyerdetails.buyer.BuyerPriority">
-                <option value="0" label="Please select"></option>
+                <option ng-value="0" label="Please select"></option>
 
-                <option ng-repeat="x in buyerdetails.priorities" value="{{x.ID}}"
-                        ng-selected="{{ x.Selected == true }}">
-                    {{x.Level}}
+                <option ng-repeat="priority in buyerdetails.priorities" ng-value="priority.ID"
+                        ng-selected="{{ priority.Selected == true }}">
+                    {{priority.Level}}
                 </option>
             </select>
 
@@ -95,24 +97,18 @@
         </div>
         <div class="col-md-4">
 
-            <label>BuyerStatus</label>
-            <select id="status" ng-model="buyerdetails.buyer.BuyerStatus">
-                <option value="0" label="Please select"></option>
-
-                <option ng-repeat="status in buyerdetails.status" value="{{status.ID}}"
-                        ng-selected="{{ status.Selected == true }}">
-                    {{status.Status}}
-                </option>
-            </select>
+            <label>IsBuyerInterested</label>
+            <input type="text" ng-model="buyerdetails.buyer.IsBuyerInterested" />
+         
 
         </div>
 
         <div class="col-md-4">
             <label>BuyerWebsite</label>
             <select id="website" ng-model="buyerdetails.buyer.BuyerWebsiteName">
-                <option value="0" label="Please select"></option>
+                <option ng-value="0" label="Please select"></option>
 
-                <option ng-repeat="website in buyerdetails.website" value="{{website.ID}}"
+                <option ng-repeat="website in buyerdetails.website" ng-value="website.ID"
                         ng-selected="{{ website.Selected == true }}">
                     {{website.WebsiteName}}
                 </option>
