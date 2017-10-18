@@ -51,6 +51,20 @@
         service.GetWebsiteById = GetWebsiteById;
         service.SaveWebsites = SaveWebsites;
 
+        //Operations On Status
+        service.GetStatuses = GetStatuses;
+        service.GetStatusById = GetStatusById;
+        service.SaveStatuses = SaveStatuses;
+
+        //OPerations On Designations
+        service.GetDesignations = GetDesignations;
+        service.GetDesignationById = GetDesignationById;
+        service.SaveDesignations = SaveDesignations;
+
+
+
+
+
 
 
      
@@ -81,13 +95,13 @@
 
         //communication function
         function GetCommunications() {
-            $http({
+        return  $http({
                 method: 'GET',
                 url: 'http://localhost:8057/api/Communications/GetCommunications'
             });
         }
         function GetCommunicationById(id) {
-            $http({
+       return     $http({
                 method: 'GET',
                 url: 'http://localhost:8057/api/Communications/GetCommunicationById',
                 params: { id: id }
@@ -95,7 +109,7 @@
             });
         }
         function SaveCommunications(communication) {
-            $http({
+         return   $http({
                 method: 'POST',
                 url: 'http://localhost:8057/api/Communications/SaveCommunications',
                 data: communication
@@ -222,6 +236,61 @@
 
             });
         }
+
+
+        //StatusfUnction   
+
+        function GetStatuses() {
+            return $http({
+                method: 'GET',
+                url: 'http://localhost:8057/api/Status/GetStatuses'
+            });
+        }
+        function GetStatusById(id) {
+            return $http({
+                method: 'GET',
+                url: "http://localhost:8057/api/Status/GetStatusById",
+       
+                params: { id: id }
+            });
+        }
+        function SaveStatuses(status) {
+            return $http({
+                method: 'POST',
+                url: 'http://localhost:8057/api/Status/SaveStatuses',
+                data: status
+            });
+        }
+
+        //DesignationsFunction 
+     
+        
+        function GetDesignations() {
+            return $http({
+                method: 'GET',
+                url: 'http://localhost:8057/api/Designations/GetDesignations'
+            });
+        }
+        function GetDesignationById(id) {
+            return $http({
+                method: 'GET',
+               
+                url: 'http://localhost:8057/api/Designations/GetDesignationById',
+                //headers: {
+                //    'Content-Type': undefined
+                //},
+              //  headers: {'Content-Type': 'application/json'},
+                params: { id: id }
+            });
+        }
+        function SaveDesignations(Designation) {
+            return $http({
+                method: 'POST',
+                url: 'http://localhost:8057/api/Designations/SaveDesignations',
+                data: Designation
+            });
+        }
+
  
        
 

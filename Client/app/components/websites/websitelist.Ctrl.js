@@ -22,7 +22,7 @@
         vm.SaveWebsites = SaveWebsites;
         vm.GetWebsiteById = GetWebsiteById;
 
-        activate();
+      
 
         function activate() {
             vm.websiteId = $routeParams.websiteId
@@ -36,6 +36,7 @@
                 function (error) { console.log(error); });
 
         }
+        activate();
 
         function GetWebsiteById(){
             mainService.GetWebsiteById(vm.websiteId).then(function(res){vm.website=res.data;
@@ -43,8 +44,12 @@
         }
         function SaveWebsites()
         {
-            mainService.SaveWebsites(vm.website).then(function (res) { vm.website = res.data; console.log("vm.website", vm.website); });
-            activate();
+            mainService.SaveWebsites(vm.website).then(function (res) {
+                vm.website = res.data;
+                console.log("vm.website", vm.website);
+                activate();
+            });
+           
         }
     }
 })();

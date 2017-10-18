@@ -96,7 +96,7 @@ namespace Pioneer.PerformanceTracker.Api.Controllers
                     existBuyer.BuyerWebsiteName = buyer.BuyerWebsiteName;
                     existBuyer.ContactNumber = buyer.ContactNumber;
                     existBuyer.ContactPerson = buyer.ContactPerson;
-                    existBuyer.ContactPersonDesignation = buyer.ContactPersonDesignation;
+                  
                     existBuyer.Date = buyer.Date;
                     existBuyer.Email = buyer.Email;
                     existBuyer.Extension = buyer.Extension;

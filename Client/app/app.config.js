@@ -8,8 +8,8 @@
     function config($routeProvider, $locationProvider) {
         $routeProvider
  .when("/", {
-      templateUrl: './app/components/buyers/list/_list.html',
-      controller: 'buyerListCtrl as buyerlist'
+     templateUrl: './app/components/buyers/list/_list.html',
+     controller: 'buyerListCtrl as buyerlist'
  })
 
  .when("/communications/list", {
@@ -26,8 +26,8 @@
 
           
  .when("/productdetails/:productId?", {
-         templateUrl: './app/components/products/productdetails/_productDetails.html',
-         controller: 'productdetailsctrl as productdetails'
+     templateUrl: './app/components/products/productdetails/_productDetails.html',
+     controller: 'productdetailsctrl as productdetails'
  })
 
 .when("/sourcelist/:sourceId?", { templateUrl: './app/components/sources/sourcelist/_sourcelist.html', controller: 'sourcelistCtrl as sourcelist' })
@@ -43,9 +43,18 @@
 
 .when("/levels/:levelId?", { templateUrl: "./app/components/levels/_level.html", controller: "levelCtrl as level" })
 
-.when("/addcommunication/:communicationId?", { templateUrl: "./app/components/communications/addcommunication/_communication.html", controller: "communicationDetailsCtrl as communicationDetails" })
+.when("/communicationdetails/:communicationId?", { templateUrl: "./app/components/communications/communicationdetails/_communicationdetails.html", controller: "communicationDetailsCtrl as communicationdetails" })
 
-        .otherwise({ redirectTo: '/' });
+
+
+.when("/designations/:DesignationId?", { templateUrl: "./app/components/designations/_designations.html", controller: "designationCtrl as designation" })
+
+.when("/status/:statusId?", {
+    templateUrl: "./app/components/status/_status.html",
+    controller: "StatusCtrl as status"
+})
+
+.otherwise({ redirectTo: '/' });
 
     }
     

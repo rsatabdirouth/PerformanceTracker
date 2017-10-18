@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using Pioneer.PerformanceTracker.Api.Models;
+using Pioneer.PerformanceTracker.Api.ViewModels;
 
 namespace Pioneer.PerformanceTracker.Api.Controllers
 {
@@ -22,8 +23,25 @@ namespace Pioneer.PerformanceTracker.Api.Controllers
         {
             try
             {
+                var buyer = _db.BuyerInfos.ToList();
                 var communications = _db.CommunicationInfos.ToList();
-                return Ok(communications);
+                var status = _db.SalesStatus.ToList();
+                var transferredto = _db.TransferredTo.ToList();
+                var medium = _db.CommunicationMediums.ToList();
+               
+
+                
+                var SalesData = new SalesData()
+                {
+                    BuyerInfo = buyer,
+                    Status = status,
+                    CommunicationMedium = medium,
+                    communicationChain = communications,
+                    TransferredTo = transferredto,
+                   
+
+                };
+                return Ok(SalesData);
             }
             catch (Exception ex)
             { return InternalServerError(ex); }

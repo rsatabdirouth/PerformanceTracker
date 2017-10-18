@@ -1,0 +1,42 @@
+﻿
+{{designation.title}}
+<div class="Container">
+    <div class="col-md-6">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Designation</th>
+                </tr>
+            </thead>
+            <tbody ng-repeat="x in designation.designations">
+                <tr>
+                    <td>
+                        {{x.ID}}
+                    </td>
+                    <td>
+                        <a href="/#!/designations/{{x.ID}}">
+
+                            {{x.designation}}
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!--<button><a href="/#!/mediumslist/">Addmedium</a></button>-->
+        <button><a href="/">Back</a></button>
+    </div>
+
+    <div class="col-md-6">
+        <div ng-cloak>
+            <p>Id :{{designation.designation.ID}}</p></br>
+            <p>Medium:{{designation.designation.designation}}</p></br>
+
+        </div>
+        Medium:  <input type="text" ng-model="designation.designation.designation" ng-required="true" />
+
+        <button ng-click="designation.SaveDesignations()">Save</button>
+        <button ng-click="designation.designation={}">Refresh</button>
+    </div>
+
+</div>

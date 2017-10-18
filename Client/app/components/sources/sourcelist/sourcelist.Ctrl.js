@@ -47,9 +47,10 @@
             mainService.SaveSources(vm.source).then(function (res) {
                 vm.source = res.data;
                 
-                active();
+          
                 console.log(res);
                 console.log("Saved data is ", vm.source);
+                active();
             }, function () { });
         }
 

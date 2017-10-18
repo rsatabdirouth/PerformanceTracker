@@ -19,29 +19,33 @@ Buyer List
                 <th>Extension</th>
                 <th>SourceWebLink</th>
                 <th>Source</th>
-                <th>Status</th>
                 <th>Website</th>
                 <th>Priority</th>
             </tr>
+
+
+
+      
+
+
 
         </thead>
         <tbody ng-repeat="buyer in buyerlist.pagedPost">
             
           <tr>
               <td>{{buyer.BuyerId}}</td>
-              <td>
-              <a href="/#!/buyerdetails/{{buyer.BuyerId}}">{{buyer.BuyerCompany}}</a></td>
+              <td><a href="/#!/buyerdetails/{{buyer.BuyerId}}">{{buyer.BuyerCompany}}</a></td>
               <td>{{buyer.Date}}</td>
-              <td>{{buyer.ProductLookingFor}}</td>
+              <td>{{buyer.Product.ProductName}}</td>
               <td>{{buyer.ContactPerson}}</td>
-              <td>{{buyer.designation.designation}}</td>
+              <td>{{buyer.BuyerDesignation.designation}}</td>
               <td>{{buyer.ContactNumber}}</td>
               <td>{{buyer.AlternativeNumber}}</td>
               <td>{{buyer.Email}}</td>
               <td>{{buyer.Extension}}</td>
               <td>{{buyer.SourceWebLink}}</td>
               <td>{{buyer.Source.Source}}</td>
-              <td>{{buyer.Status.Status}}</td>
+            
               <td>{{buyer.Website.WebsiteName}}</td>
               <td>{{buyer.Priority.Level}}</td>
          </tr>

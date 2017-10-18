@@ -1,0 +1,35 @@
+﻿{{status.title}}
+<div class="Container">
+    <div class="col-md-6 col-lg-6">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Communicationstatus</th>
+                </tr>
+            </thead>
+            <tbody ng-repeat="status in status.statuses">
+                <tr>
+                    <td>
+                        {{status.ID}}
+                    </td>
+                    <td>
+                    <a href="/#!/status/{{status.ID}}">{{status.Status}}</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-6 col-lg-6">
+        <div ng-cloak>
+          ID:  {{status.status.ID}}
+          Status: {{status.status.Status}}
+        </div>
+        <label>Status</label>
+        <input type="text" ng-model="status.status.Status"/>
+
+        <button ng-click="status.status={}">Refresh</button>
+        <button ng-click="status.SaveStatuses()">Save</button>
+    </div>
+
+</div>
