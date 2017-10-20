@@ -10,6 +10,7 @@ namespace Pioneer.PerformanceTracker.Api.Models
     {
         [Key]
         public int ID { get; set; }
+       [Required(ErrorMessage ="Source is required")]
         public string Source { get; set; }
     }
 }

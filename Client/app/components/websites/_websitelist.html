@@ -36,14 +36,21 @@
             
         </div>
 
+       <ng-form name="website" >
+           
+           <input type="text" ng-model="websitelist.website.WebsiteName" ng-required="true" ng-messages="enter Website" name="WebsiteName" id="WebsiteName" placeholder="Enter WebsiteName" class="inputform2" />
+<div class="botton_div">
+    <button class="guide" ng-disabled="website.$invalid" ng-click="websitelist.SaveWebsites()">Save</button>
+    <button class="guide" ng-click="websitelist.website={}">Refresh</button>
+</div>
+       </ng-form>
+   
+
+
+
        
-    <input type="text" ng-model="websitelist.website.WebsiteName" />
 
-
-       
-
-       <button ng-click="websitelist.SaveWebsites()">Save</button>
-        <button ng-click="websitelist.website={}">Refresh</button>
+      
     </div>
 
 </div>

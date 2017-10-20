@@ -10,6 +10,7 @@ namespace Pioneer.PerformanceTracker.Api.Models
     {
         [Key]
         public int ID { get; set; }
-        public String Level { get; set; }
+        [Required(ErrorMessage = "Insert the level")]
+        public string Level { get; set; }
     }
 }

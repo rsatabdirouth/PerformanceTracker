@@ -62,7 +62,15 @@
         service.SaveDesignations = SaveDesignations;
 
 
-
+        //query
+        service.Buyersquery = Buyersquery;
+        function Buyersquery()
+        {
+            return $http({
+                method: 'GET',
+                url: 'http://localhost:8057/api/Buyers/GetBuyers', params: { $orderby : 'BuyerId desc' }
+            });
+        }
 
 
 
@@ -96,15 +104,17 @@
         //communication function
         function GetCommunications() {
         return  $http({
-                method: 'GET',
-                url: 'http://localhost:8057/api/Communications/GetCommunications'
+            method: 'GET',
+            url: 'http://localhost:8057/api/Communications/GetCommunications',
+              
             });
         }
-        function GetCommunicationById(id) {
-       return     $http({
-                method: 'GET',
-                url: 'http://localhost:8057/api/Communications/GetCommunicationById',
-                params: { id: id }
+        function GetCommunicationById(id)
+        {
+           return  $http({
+               method: 'GET',
+               url: 'http://localhost:8057/api/Communications/GetCommunicationById',
+               params: { id: id }
 
             });
         }
@@ -250,8 +260,8 @@
             return $http({
                 method: 'GET',
                 url: "http://localhost:8057/api/Status/GetStatusById",
-       
-                params: { id: id }
+                params: {id:id},
+                headers:{Accept:"application/json, text/plain, */*"}
             });
         }
         function SaveStatuses(status) {

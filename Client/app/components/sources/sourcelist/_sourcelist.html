@@ -30,19 +30,26 @@
             {{sourcelist.source.ID}}
             {{sourcelist.source.Source}}
         </div>
+   <ng-form name="SourceForm">
+
+       <label>Id</label>
+       <label>SourceName</label>
+       <input type="text" ng-model="sourcelist.source.Source" ng-required="true" ng-message="Please fill the source name" placeholder="Please fill the source name" name="Source" id="Source" class="inputform2" />
+
+
+<div class="button-div">
+    <button ng-click="sourcelist.SaveSources()" ng-disabled="SourceForm.$invalid" class="guide">Save</button>
+    <button ng-click="sourcelist.source={}" class="guide">Reset</button>
+    <button><a href="/"> Back</a></button>
+</div>
+      
+
+   </ng-form>    
+
        
 
-        <label>Id</label>
-        <label>SourceName</label>
-        <input type="text" ng-model="sourcelist.source.Source" />
-        <button ng-click="sourcelist.SaveSources()">Save</button>
-        <button ng-click="sourcelist.source={}">Reset</button>
-    
-
         </div>
-        <div>
-            <button><a href="/"> Back</a></button>
-        </div>
+       
     </div>
 
 

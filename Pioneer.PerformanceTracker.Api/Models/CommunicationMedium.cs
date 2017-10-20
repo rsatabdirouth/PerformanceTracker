@@ -10,6 +10,7 @@ namespace Pioneer.PerformanceTracker.Api.Models
     {
         [Key]
         public int ID { get; set; }
+        [Required(ErrorMessage ="Insert the medium")]
         public string Medium { get; set; }
     }
 }

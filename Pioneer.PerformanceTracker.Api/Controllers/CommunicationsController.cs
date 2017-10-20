@@ -67,6 +67,11 @@ namespace Pioneer.PerformanceTracker.Api.Controllers
         {
             try
             {
+                if (!ModelState.IsValid)
+                {
+                    return Ok();
+
+                }
                 if (model.CommunicationID>0)
                 {
                     var existcommunication = _db.CommunicationInfos.FirstOrDefault(x => x.CommunicationID == model.CommunicationID);
@@ -84,6 +89,7 @@ namespace Pioneer.PerformanceTracker.Api.Controllers
                   
 
                     _db.SaveChanges();
+                   // existcommunication.IsFollowupSubmitted = true;
                     return Ok(existcommunication);
 
                 }
@@ -91,11 +97,11 @@ namespace Pioneer.PerformanceTracker.Api.Controllers
                     model.CommunicationID = Id++;
                     _db.CommunicationInfos.Add(model);
                     _db.SaveChanges();
-
-
+                  //  model.IsFollowupSubmitted = true;
+                  
                 }
-                return Ok(model);
 
+                return Ok(model);
             }
             catch (Exception ex)
             { return InternalServerError(ex); }

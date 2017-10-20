@@ -27,50 +27,96 @@
         vm.pagedPost = [];
         vm.pageChange = pageChange;
 
+        //
+       
+        //vm.Buyersquery = Buyersquery;
+        //function Buyersquery()
+        //{
+        //    mainService.Buyersquery().then(function (res) { console.log(res); });
+        //}
+
 
         $rootScope.title = "Buyer List";
 
         activate();
         function activate() {
 
-
-
-            mainService.getBuyers().then(function (res) {
+            mainService.Buyersquery().then(function (res) {
+               
                 vm.buyers = res.data;
-                console.log("test", vm.buyers);
-                vm.communicationdata = res.data.communicationChain;
-                console.log("communicationChain", vm.communicationdata);
-                vm.buyerdata = res.data.BuyerInfo;
-                console.log("buyerdata", vm.buyerdata);
-                vm.Designation = res.data.Designation;
-                console.log("Designation", vm.Designation);
-                vm.Priority = res.data.Priority;
-                console.log("Priority", vm.Priority);
-                vm.Source = res.data.Source;
-                console.log("Source", vm.Source);
-                vm.Status = res.data.Status;
-                console.log("Status", vm.Status);
-                vm.TransferredTo = res.data.TransferredTo;
-                console.log("TransferredTo", vm.TransferredTo);
-                vm.CommunicationMedium = res.data.CommunicationMedium;
-                console.log("CommunicationMedium", vm.CommunicationMedium);
-                vm.product = res.data.product;
-                console.log("product", vm.product);
-                vm.web = res.data.web;
-                console.log("web", vm.web);
+                console.log(vm.buyers);
+                 
+                  //  console.log("test", vm.buyers);
+                    vm.communicationdata = res.data.communicationChain;
+                    console.log("communicationChain", vm.communicationdata);
+                    vm.buyerdata = res.data.BuyerInfo;
+                    console.log("buyerdata", vm.buyerdata);
+                    vm.Designation = res.data.Designation;
+                    console.log("Designation", vm.Designation);
+                    vm.Priority = res.data.Priority;
+                    console.log("Priority", vm.Priority);
+                    vm.Source = res.data.Source;
+                    console.log("Source", vm.Source);
+                    vm.Status = res.data.Status;
+                    console.log("Status", vm.Status);
+                    vm.TransferredTo = res.data.TransferredTo;
+                    console.log("TransferredTo", vm.TransferredTo);
+                    vm.CommunicationMedium = res.data.CommunicationMedium;
+                    console.log("CommunicationMedium", vm.CommunicationMedium);
+                    vm.product = res.data.product;
+                    console.log("product", vm.product);
+                    vm.web = res.data.web;
+                    console.log("web", vm.web);
 
-                vm.totalbuyer = vm.buyerdata.length;
-                console.log("length.Buyer", vm.totalbuyer);
-                vm.totalBuyerPage = Math.ceil(vm.totalbuyer / vm.Itemsperpage);
-                console.log("TotalBuyerpage", vm.totalBuyerPage);
+                    vm.totalbuyer = vm.buyerdata.length;
+                    console.log("length.Buyer", vm.totalbuyer);
+                    vm.totalBuyerPage = Math.ceil(vm.totalbuyer / vm.Itemsperpage);
+                    console.log("TotalBuyerpage", vm.totalBuyerPage);
 
-                for (var i = 1; i <= vm.totalBuyerPage; i++) {
-                    vm.pages.push(i);
-                }
+                    for (var i = 1; i <= vm.totalBuyerPage; i++) {
+                        vm.pages.push(i);
+                    }
 
-                vm.pageChange(vm.pages[--vm.currentPage]);
+                    vm.pageChange(vm.pages[--vm.currentPage]);
 
-            })
+            });
+
+            //mainService.getBuyers().then(function (res) {
+            //    vm.buyers = res.data;
+            //    console.log("test", vm.buyers);
+            //    vm.communicationdata = res.data.communicationChain;
+            //    console.log("communicationChain", vm.communicationdata);
+            //    vm.buyerdata = res.data.BuyerInfo;
+            //    console.log("buyerdata", vm.buyerdata);
+            //    vm.Designation = res.data.Designation;
+            //    console.log("Designation", vm.Designation);
+            //    vm.Priority = res.data.Priority;
+            //    console.log("Priority", vm.Priority);
+            //    vm.Source = res.data.Source;
+            //    console.log("Source", vm.Source);
+            //    vm.Status = res.data.Status;
+            //    console.log("Status", vm.Status);
+            //    vm.TransferredTo = res.data.TransferredTo;
+            //    console.log("TransferredTo", vm.TransferredTo);
+            //    vm.CommunicationMedium = res.data.CommunicationMedium;
+            //    console.log("CommunicationMedium", vm.CommunicationMedium);
+            //    vm.product = res.data.product;
+            //    console.log("product", vm.product);
+            //    vm.web = res.data.web;
+            //    console.log("web", vm.web);
+
+            //    vm.totalbuyer = vm.buyerdata.length;
+            //    console.log("length.Buyer", vm.totalbuyer);
+            //    vm.totalBuyerPage = Math.ceil(vm.totalbuyer / vm.Itemsperpage);
+            //    console.log("TotalBuyerpage", vm.totalBuyerPage);
+
+            //    for (var i = 1; i <= vm.totalBuyerPage; i++) {
+            //        vm.pages.push(i);
+            //    }
+
+            //    vm.pageChange(vm.pages[--vm.currentPage]);
+
+            //})
         }
        
         function pageChange(page) {

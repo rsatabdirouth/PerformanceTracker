@@ -32,10 +32,18 @@
             <p>Medium:{{medium.medium.Medium}}</p></br>
             
         </div>
-      Medium:  <input type="text" ng-model="medium.medium.Medium" ng-required="true" />
+        <ng-form name="Mediumform">
+            Medium:
+            <input type="text" ng-model="medium.medium.Medium" ng-required="true" ng-mouseover="red" ng-message="medium is required" id="Medium" name="Medium" class="inputform2" placeholder="please enter Medium" />
+            <div class="button-div">
+                <button ng-click="medium.SaveMediums()" ng-disabled="Mediumform.$invalid" class="guide">Save</button>
+                <button ng-click="medium.medium={}">Refresh</button>
+            </div>
+           
 
-        <button ng-click="medium.SaveMediums()">Save</button>
-        <button ng-click="medium.medium={}">Refresh</button>
+        </ng-form>
+
+   
     </div>
 
 </div>

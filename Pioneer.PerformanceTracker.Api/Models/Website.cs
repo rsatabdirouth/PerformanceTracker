@@ -10,6 +10,7 @@ namespace Pioneer.PerformanceTracker.Api.Models
     {
         [Key]
         public int ID { get; set; }
+       [Required(ErrorMessage ="Please insert the websiteName")]
         public string WebsiteName { get; set; }
     }
 }

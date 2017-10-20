@@ -11,7 +11,7 @@
         /* jshint validthis:true */
         var vm = this;
         $rootScope.title = "levelCtrl";
-       // alert("levelCtrl");
+        // alert("levelCtrl");
         vm.title = 'levelCtrl';
 
         vm.levels = [];
@@ -19,6 +19,14 @@
         vm.levelId;
         vm.GetLevelById = GetLevelById;
         vm.SaveLevels = SaveLevels;
+
+
+
+
+
+
+
+
 
         activate();
 

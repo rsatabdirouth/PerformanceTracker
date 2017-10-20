@@ -7,6 +7,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using System.Web.Http.OData;
 
 namespace Pioneer.PerformanceTracker.Api.Controllers
 {
@@ -20,39 +21,41 @@ namespace Pioneer.PerformanceTracker.Api.Controllers
         public static int Id = 1;
         SalesContext _db = new SalesContext();
 //get list of all buyers
-        [HttpGet]
-        public IHttpActionResult GetBuyers()
+        [HttpGet, EnableQuery()]
+       public IHttpActionResult GetBuyers()
         {
             try
             {
                 
                 SalesContext _db = new SalesContext();
-                var product = _db.Products.ToList();
-                var website = _db.Websites.ToList();
-                var Buyer = _db.BuyerInfos.ToList();
-                var buyerdesignation = _db.BuyerDesignations.ToList();
-                var status = _db.SalesStatus.ToList();
-                var source = _db.BuyerSources.ToList();
-                var Communicationmedium = _db.CommunicationMediums.ToList();
-                var communicationinformation = _db.CommunicationInfos.ToList();
-                var TransferTo = _db.TransferredTo.ToList();
-                var Priority = _db.BuyerPriorities.ToList();
-                var SalesData = new SalesData()
-                {
-                    BuyerInfo = Buyer,
-                    product = product,
-                    web = website,
-                    Designation = buyerdesignation,
-                    Status = status,
-                    Source = source,
-                    CommunicationMedium = Communicationmedium,
-                    communicationChain = communicationinformation,
-                    TransferredTo = TransferTo,
-                    Priority = Priority,
+                var buyers = _db.BuyerInfos.AsQueryable();
+                //
+                //var product = _db.Products.ToList();
+                //var website = _db.Websites.ToList();
 
-                };
-             
-                return Ok(SalesData);
+                //var buyerdesignation = _db.BuyerDesignations.ToList();
+                //var status = _db.SalesStatus.ToList();
+                //var source = _db.BuyerSources.ToList();
+                //var Communicationmedium = _db.CommunicationMediums.ToList();
+                //var communicationinformation = _db.CommunicationInfos.ToList();
+                //var TransferTo = _db.TransferredTo.ToList();
+                //var Priority = _db.BuyerPriorities.ToList();
+                //var SalesData = new SalesData()
+                //{
+
+                //    product = product,
+                //    web = website,
+                //    Designation = buyerdesignation,
+                //    Status = status,
+                //    Source = source,
+                //    CommunicationMedium = Communicationmedium,
+                //    communicationChain = communicationinformation,
+                //    TransferredTo = TransferTo,
+                //    Priority = Priority,
+
+                //};
+
+                return Ok(buyers);
             }
             
             catch (Exception exception)
@@ -81,6 +84,10 @@ namespace Pioneer.PerformanceTracker.Api.Controllers
             [HttpPost]
         public IHttpActionResult SaveBuyers(BuyerInfo buyer)
         {
+            //if(!ModelState.IsValid)
+            //{
+            //    return Ok();
+            //}
             try
             {
               
@@ -104,6 +111,7 @@ namespace Pioneer.PerformanceTracker.Api.Controllers
                     existBuyer.Website = buyer.Website;
                     existBuyer.ProductLookingFor = buyer.ProductLookingFor;
                     _db.SaveChanges();
+                  //  existBuyer.IsBuyerSubmitted = true;
                     return Ok (existBuyer);
                 }
                 else
@@ -112,9 +120,11 @@ namespace Pioneer.PerformanceTracker.Api.Controllers
                     buyer.Date = DateTime.Now;
                     _db.BuyerInfos.Add(buyer);
                     _db.SaveChanges();
+                  //  buyer.IsBuyerSubmitted = true;
                    
                 }
                 return Ok(buyer);
+
             }
             catch (Exception exception)
             {
@@ -123,7 +133,51 @@ namespace Pioneer.PerformanceTracker.Api.Controllers
 
         }
 
-       
+
+        //[HttpGet]
+        //public IHttpActionResult GetBuyer(SalesData model)
+        //{
+
+        //    // var data = 
+
+        //    var data = (from l in _db.BuyerInfos
+        //                join m in _db.BuyerPriorities  on l.BuyerPriority equals m.ID 
+        //                join n in _db.BuyerSources on l.BuyerSource equals n.ID
+        //                join o in _db.Products on l.ProductLookingFor equals o.ID
+                               
+        //                where (l.BuyerId > 0)                 
+        //                select new {
+                           
+                           
+        //                    m.Level,
+        //                    n.Source,
+        //                    o.ProductName,
+
+
+        //                }).ToList();
+           
+         
+        //    try
+        //    {
+        //        //if (id > 0)
+        //        //{
+
+        //        //}
+        //        //if (source != null)
+        //        //{
+
+        //        //}
+        //        return Ok();
+        //    }
+        //    catch (Exception exception)
+        //    {
+        //        return InternalServerError(exception);
+
+        //    }
+        //}
+
+
+
     }
 }
 

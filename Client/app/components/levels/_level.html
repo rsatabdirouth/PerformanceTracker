@@ -1,19 +1,24 @@
 ﻿{{level.title}}
 <div class="Container">
+    
     <div class="col-md-6">
         <table>
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Level</th>
+                    <th>
+                        Level
+                       
+                    </th>
                 </tr>
             </thead>
-            <tbody ng-repeat="level in level.levels">
+            <tbody ng-repeat="level in level.levels" >
                 <tr>
                     <td>{{level.ID}}</td>
                     <td><a href="/#!/levels/{{level.ID}}">
                         {{level.FollowupBy}}
                         </a></td>
+                  
                 </tr>
             </tbody>
         </table>
@@ -27,10 +32,19 @@
             <p>Level:{{level.level.FollowupBy}}</p></br>
 
         </div>
-        <input type="text" ng-model="level.level.FollowupBy" ng-required="true" />
+        <ng-form name="FollowupByform">
+        <label>FollowupBy</label>
+        <input type="text" ng-model="level.level.FollowupBy" ng-required="true" ng-message="Level is required"
+               ng-cloak id="FollowupBy" placeholder="enter communicator name" name="FollowupBy" class="inputform2"/>
 
-        <button ng-click="level.SaveLevels()">Save</button>
-        <button ng-click="level.level={}">Refresh</button>
+            <div class="button-div">
+                <button ng-click="level.SaveLevels()" class="guide" ng-disabled="FollowupByform.$invalid">Save</button>
+                <button ng-click="level.level={}" class="guide">Refresh</button>
+            </div>
+       
+
+        </ng-form>
+        
     </div>
 
 </div>

@@ -6,11 +6,20 @@
     {{productdetails.product.ID}}
    {{productdetails.product.ProductName}}
 </div>
-<label>Name</label>
-<input type="text" ng-model="productdetails.product.ProductName" ng-required="true"/>
 
-<button ng-click="productdetails.SaveProduct()"> Save</button>
-<button ng-click="productdetails.buyer= {}"> Reset</button>
-<a href="/#!/productlists">Back</a>
+<ng-form name="ProductNameform">
+    <label>ProductName</label>
+    <input type="text" ng-model="productdetails.product.ProductName" ng-required="true" ng-message="Enter ProductName" name="ProductName" id="ProductName" class="inputform2" placeholder="Please enter the productname" />
+
+    <div class="button-div">
+
+        <button ng-click="productdetails.SaveProduct()" ng-disabled="ProductNameform.$invalid" class="guide"> Save</button>
+        <button ng-click="productdetails.buyer= {}" class="guide"> Reset</button>
+        <a href="/#!/productlists">Back</a>
+
+    </div>
+
+
+</ng-form>
 
 

@@ -1,0 +1,126 @@
+﻿{{followup.title}}
+
+<ng-form name="AddBuyers">
+    <div class="Container">
+
+        <div class="col-md-4">
+            <label>BuyerId</label>
+            <select  id="BuyerID" name="BuyerID" class="inputform2" ng-model="followup.communication.BuyerID" ng-required="true" title="Enter BuyerID">
+                <option ng-value="" label="Please select"></option>
+
+                <option ng-repeat="x in followup.buyer" ng-value="x.BuyerId"
+                        ng-selected="{{ x.Selected == true }}">
+                    {{x.BuyerId}}
+                </option>
+            </select>
+
+            
+        </div>
+        <div class="col-md-4">
+            <label>FirstDateOfInteraction</label>
+            <input type="text" ng-model="followup.communication.FirstDateOfInteraction" ng-required="true" placeholder="enter FirstDateOfInteraction" id="FirstDateOfInteraction" name="FirstDateOfInteraction" class="inputform2"/>
+        </div>
+              <div class="col-md-4">
+            <label>CommunicatedBy</label>
+           <input type="text" ng-model="followup.communication.communicatedBy"ng-required="true" class="inputform2" id="communicatedBy" name="communicatedBy" placeholder="enter communicatedBy" />
+
+        </div>
+
+        <div class="col-md-4">
+            <label>CommunicationVia</label>
+            <select id="CommunicationVia" name="CommunicationVia" class="inputform2" ng-model="followup.communication.CommunicationVia" ng-required="true" title="Enter CommunicationVia">
+                <option ng-value="" label="Please select"></option>
+
+                <option ng-repeat="medium in followup.CommunicationMedium" ng-value="medium.ID"
+                        ng-selected="{{ medium.Selected == true }}">
+                    {{medium.Medium}}
+                </option>
+            </select>
+           
+
+        </div>
+        <div class="col-md-4">
+            <label>FeedBack</label>
+            <input type="text" ng-model="followup.communication.Feedback" id="FeedBack" name="FeedBack" ng-required="true" class="inputform2" placeholder="Enter Your Feedback"/>
+
+        </div>
+        <div class="col-md-4">
+
+            <label>IsInterested</label>
+            <input type="text" ng-model="followup.communication.Isintersted" ng-required="true" id="Isintersted" name="Isintersted" class="inputform2" placeholder="please enter true or false"/>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <label>NextStep</label>
+            <input type="text" ng-model="followup.communication.NextStep" id="NextStep" name="NextStep" ng-required="true" placeholder="enter NextStep" class="inputform2"/>
+        </div>
+        <div class="col-md-4">
+            <label>TransferredTo</label>
+
+            <select id="TransferredTo" ng-model="followup.communication.TransferredTo" ng-required="true" name="TransferredTo" class="inputform2" title="Enter Level">
+                <option ng-value="" label="Please select"></option>
+
+                <option ng-repeat="x in followup.TransferredTo" ng-value="x.ID"
+                        ng-selected="{{ x.Selected == true }}">
+                    {{x.FollowupBy}}
+                </option>
+            </select>
+           
+
+        </div>
+        <div class="col-md-4">
+        <label>NextFollowupDate</label>
+        <input  ng-model="followup.communication.NextFollowUpDate" id="NextFollowupDate" name="NextFollowupDate"type="datetime" ng-required="true" placeholder="Enter NextFollowupDate" class="inputform2"/>
+    
+
+        </div>
+
+
+
+        <div class="col-md-4">
+            <label>SalesStatus</label>
+
+            <select id="SalesStatus" name="SalesStatus" class="inputform2" ng-model="followup.communication.SalesStatus" ng-required="true" title="Enter SalesStatus ">
+                <option ng-value="" label="Please select"></option>
+
+                <option ng-repeat="x in followup.status" ng-value="x.ID"
+                        ng-selected="{{ x.Selected == true }}">
+                    {{x.Status}}
+                </option>
+            </select>
+           
+
+
+        </div>
+        <div class="col-md-4">
+
+            <label>IsConverted</label>
+            <input type="text" ng-model="followup.communication.IsConverted" ng-required="true" id="IsConverted" name="IsConverted" class="inputform2" placeholder="Enter IsConverted as true or false"/>  
+          
+            <!--<select class="inputform2" name="IsConverted" ng-model="followup.communication.IsConverted" id="IsConverted" ng-required="true">
+                <option ng-value="0">false</option>
+                <option ng-value="1">true</option>
+              
+            </select>-->
+
+        </div>
+        <div class="button-div">
+            <button ng-click="followup.SaveCommunications()" class="guide" ng-disabled="AddBuyers.$invalid">Save</button>
+            <!--ng-submit="followup.communication.IsFollowupSubmitted=true"-->
+            <button ng-click="followup.communication={}" class="guide">Reset</button>
+
+
+        </div>
+       
+       
+
+    </div>
+   
+</ng-form>
+
+
+
+
+

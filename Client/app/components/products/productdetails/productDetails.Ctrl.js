@@ -13,7 +13,7 @@
         $rootScope.title = "Product Details";
         var vm = this;
         vm.title = 'productDetails';
-        alert("ProductDetails");
+       // alert("ProductDetails");
         vm.product = {};
         vm.productId;
         vm.GetProductById = GetProductById;

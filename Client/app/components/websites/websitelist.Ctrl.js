@@ -13,7 +13,7 @@
         var vm = this;
         $rootScope.title = "websitelistCtrl";
         vm.title = 'websitelistCtrl';
-       // alert("websitelistCtrl");
+     
 
         vm.websites = [];
         vm.website = {};
@@ -21,6 +21,7 @@
         vm.websiteId;
         vm.SaveWebsites = SaveWebsites;
         vm.GetWebsiteById = GetWebsiteById;
+        
 
       
 

@@ -33,10 +33,17 @@
             <p>Medium:{{designation.designation.designation}}</p></br>
 
         </div>
-        Medium:  <input type="text" ng-model="designation.designation.designation" ng-required="true" />
+        <ng-form name="mediumform">
+            Medium:
+            <input type="text" ng-model="designation.designation.designation" ng-required="true" ng-message="please enter designation" placeholder="please enter designation" id="designation" name="designation" ng-class="inputform2" />
+<div>
+    <button ng-click="designation.SaveDesignations()" ng-disabled="mediumform.$invalid" class="guide">Save</button>
+    <button ng-click="designation.designation={}"class="guide">Refresh</button>
+</div>
+           
 
-        <button ng-click="designation.SaveDesignations()">Save</button>
-        <button ng-click="designation.designation={}">Refresh</button>
+        </ng-form>
+      
     </div>
 
 </div>

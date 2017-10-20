@@ -21,6 +21,12 @@
     templateUrl: './app/components/buyers/buyerdetails/_buyerdetails.html',
     controller: 'buyerdetailsCtrl as buyerdetails'
 })
+ //
+.when("/followupdetails/:followupId?", {
+    templateUrl: './app/components/communications/followupdetails/_followup.html',
+    controller: 'followupCtrl as followup'
+})
+//
 
 .when('/productlists', { templateUrl: './app/components/products/productlists/_productlist.html', controller: 'productlistCtrl as productlist' })
 
@@ -43,7 +49,7 @@
 
 .when("/levels/:levelId?", { templateUrl: "./app/components/levels/_level.html", controller: "levelCtrl as level" })
 
-.when("/communicationdetails/:communicationId?", { templateUrl: "./app/components/communications/communicationdetails/_communicationdetails.html", controller: "communicationDetailsCtrl as communicationdetails" })
+
 
 
 

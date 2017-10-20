@@ -10,6 +10,6 @@ namespace Pioneer.PerformanceTracker.Api.Models
     {
         [Key]
         public int ID { get; set; }
-        public string Status { get; set; }
+        [Required(ErrorMessage ="Please insert the status")]public string Status { get; set; }
     }
 }

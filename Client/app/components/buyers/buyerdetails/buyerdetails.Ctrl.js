@@ -12,13 +12,15 @@
         $rootScope.title = "buyer details";
         var vm = this;
         vm.title = 'buyer details';
-        alert("add Buyer");
+       // alert("add Buyer");
       
 
         vm.buyerId;
         vm.buyer = {};
         vm.GetBuyerById = GetBuyerById;
-       // vm.GetBuyerById = GetBuyerById;
+        //
+       // vm.validLongForm = validLongForm;
+        //
         vm.SaveBuyers = SaveBuyers;
        
 
@@ -29,7 +31,8 @@
         vm.TransferredTo = [];
         vm.status = [];
         vm.website = [];
-
+        vm.mail = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/;
+        vm.formSubmitted = false;
    
         activate();
 
@@ -52,32 +55,44 @@
                 vm.TransferredTo = res.data.TransferredTo;
                 vm.status = res.data.Status;
                 vm.website = res.data.web;
-            })
+            });
         }
+
 
   
         function GetBuyerById() {
             mainService.GetBuyerById(vm.buyerId).then(function (res) {
                 vm.buyer = res.data;
-                console.log("GetSourceById", vm.source);
+                console.log("GetBuyerById", vm.buyer);
             }, function () { });
         }
 
+//
+  //function validLongForm() {
+  //if (vm.buyer.BuyerCompany != "" && vm.buyer.ContactPerson != "" && vm.buyer.ProductLookingFor != null && vm.buyer.ContactPersonDesignation != null && vm.buyer.ContactNumber != null && vm.buyer.AlternativeNumber != null && vm.buyer.Email != "" && vm.buyer.Extension != "" && vm.buyer.SourceWebLink != null && vm.buyer.BuyerSource != null && vm.buyer.BuyerPriority != null && vm.buyer.IsBuyerInterested != null && vm.buyer.BuyerWebsiteName != null)
+  //              return true;
+  //          else
+  //              false;
+  //      }
+//   
 
+  function SaveBuyers(buyer)
+  {
+      console.log("testvalidation", vm.buyer);
+      //if (!buyeradd.$pristine && buyeradd.$valid && validLongForm()) {
+          vm.formSubmitted = true;
+          mainService.SaveBuyers(vm.buyer).then(
+              function (res) {
+                  vm.buyer = res.data;
+                  console.log(vm.buyer);
+              },
+              function (err) {
+                  console.log(err);
+              }
 
-     
+              );
+      }
+  }
 
-        function SaveBuyers() {
-            mainService.SaveBuyers(vm.buyer).then(
-                function (res) 
-                { 
-                    vm.buyer = res.data;
-                    console.log(vm.buyer);
-                },
-                function (err)
-                { console.log(err);}
-                
-                );  }
-
-    }
+   // }
 })();

@@ -10,6 +10,6 @@ namespace Pioneer.PerformanceTracker.Api.Models
     {
         [Key]
         public int ID { get; set; }
-        public string designation { get; set; }
+      [Required(ErrorMessage ="Please enter the designation")]  public string designation { get; set; }
     }
 }

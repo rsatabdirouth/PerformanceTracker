@@ -13,20 +13,27 @@
         $rootScope.title = "Communication Status";
 
         vm.title = 'Status';
-        alert("status");
+       // alert("status");
         vm.statuses = [];
         vm.status = {};
         vm.statusId;
         vm.GetStatusById = GetStatusById;
         vm.SaveStatuses = SaveStatuses;
+        vm.columnname;
 
     
 
         function activate()
         {
+            vm.columnname = $routeParams.columnname;
+            console.log("column name is",vm.columnname);
             vm.statusId = $routeParams.statusId;
-            console.log(vm.statusId);
-            vm.GetStatusById(vm.statusId);
+            console.log("vm.statusId", vm.statusId);
+            if (vm.statusId > 0)
+            {
+                vm.GetStatusById(vm.statusId);
+            }
+            
             mainService.GetStatuses().then(function (res)
             {
                 vm.statuses = res.data;

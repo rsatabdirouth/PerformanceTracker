@@ -5,7 +5,7 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Communicationstatus</th>
+                    <th ng-click="status.columnname">Communicationstatus</th>
                 </tr>
             </thead>
             <tbody ng-repeat="status in status.statuses">
@@ -25,11 +25,30 @@
           ID:  {{status.status.ID}}
           Status: {{status.status.Status}}
         </div>
-        <label>Status</label>
-        <input type="text" ng-model="status.status.Status"/>
 
-        <button ng-click="status.status={}">Refresh</button>
-        <button ng-click="status.SaveStatuses()">Save</button>
+        <ng-form name="Statusform">
+            <label>Status</label>
+            <input type="text" ng-model="status.status.Status" ng-required="true" ng-message="enter Status" name="Status" id="Status" placeholder="Please Enter Status" class="inputform2" />
+
+   
+
+
+
+                <div class="botton_div">
+
+                    <input type="submit" class="guide" value="Save" ng-click="status.SaveStatuses()()"
+                           ng-disabled="Statusform.$invalid">
+
+                    <button class="guide" ng-click="status.status= {}"> Reset</button>
+                    <a href="/">Home</a>
+                </div>
+
+
+
+
+
+        </ng-form>
+       
     </div>
 
 </div>

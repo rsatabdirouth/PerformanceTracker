@@ -13,7 +13,7 @@
         $rootScope.title = "designation Status";
 
         vm.title = 'designation';
-        alert("designation");
+      //  alert("designation");
         vm.designations = [];
         vm.designation = {};
         vm.DesignationId;
@@ -25,7 +25,11 @@
         function activate() {
             vm.DesignationId = $routeParams.DesignationId;
             console.log(vm.DesignationId);
-            vm.GetDesignationById(vm.DesignationId);
+            if (vm.DesignationId)
+            {
+                vm.GetDesignationById(vm.DesignationId);
+            }
+           
             mainService.GetDesignations().then(function (res) {
                 vm.designations = res.data;
                 console.log(" vm.Designations", vm.designations);

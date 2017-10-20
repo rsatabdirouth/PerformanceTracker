@@ -10,6 +10,6 @@ namespace Pioneer.PerformanceTracker.Api.Models
     {
         [Key]
         public int ID { get; set; }
-        public string ProductName { get; set; }
+       [Required(ErrorMessage ="Please insert the product name")] public string ProductName { get; set; }
     }
 }
