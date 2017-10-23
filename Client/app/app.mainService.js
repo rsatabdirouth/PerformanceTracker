@@ -14,7 +14,7 @@
        
 
         //Operation on buyers
-        service.getBuyers = getBuyers;
+        service.GetBuyers = getBuyers;
         service.GetBuyerById = GetBuyerById;
         service.SaveBuyers = SaveBuyers;
 
@@ -39,7 +39,8 @@
         service.GetProductById = GetProductById;
         service.SaveProducts = SaveProducts;
 
-        
+        //operation on priorities
+        service.GetPriorities = GetPriorities;
 
         //Opertation on source
         service.GetSources = GetSources;
@@ -61,29 +62,26 @@
         service.GetDesignationById = GetDesignationById;
         service.SaveDesignations = SaveDesignations;
 
-
-        //query
-        service.Buyersquery = Buyersquery;
-        function Buyersquery()
+        //buyer priorities
+        function GetPriorities()
         {
             return $http({
+
                 method: 'GET',
-                url: 'http://localhost:8057/api/Buyers/GetBuyers', params: { $orderby : 'BuyerId desc' }
-            });
+                url: '  http://localhost:8057/api/Priorities/GetPriorities'
+            })
+
         }
-
-
-
-
-     
+      
 
 
         //buyer function
 
-        function getBuyers() {
+        function getBuyers(query) {
             return $http({
             method: 'GET',
-            url: 'http://localhost:8057/api/Buyers/GetBuyers'
+            url: 'http://localhost:8057/api/Buyers/GetBuyers',
+            params: query
             });
         }
         function GetBuyerById(id) {
@@ -102,11 +100,11 @@
         }
 
         //communication function
-        function GetCommunications() {
+        function GetCommunications(query) {
         return  $http({
             method: 'GET',
             url: 'http://localhost:8057/api/Communications/GetCommunications',
-              
+            params: query
             });
         }
         function GetCommunicationById(id)

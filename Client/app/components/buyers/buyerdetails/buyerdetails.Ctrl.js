@@ -14,21 +14,26 @@
         vm.title = 'buyer details';
        // alert("add Buyer");
       
+        
+
+
+
 
         vm.buyerId;
         vm.buyer = {};
         vm.GetBuyerById = GetBuyerById;
-        //
-       // vm.validLongForm = validLongForm;
+         //
+        // vm.validLongForm = validLongForm;
         //
         vm.SaveBuyers = SaveBuyers;
        
 
         vm.products = [];
         vm.designation = [];
-        vm.priorities = [];
+        vm.Priority = [];
         vm.sources = [];
         vm.TransferredTo = [];
+
         vm.status = [];
         vm.website = [];
         vm.mail = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/;
@@ -47,15 +52,30 @@
                 
            }
      
-            mainService.getBuyers().then(function (res) {
-                vm.products = res.data.product;
-                vm.priorities = res.data.Priority;
-                vm.sources = res.data.Source;
-                vm.designation = res.data.Designation;
-                vm.TransferredTo = res.data.TransferredTo;
-                vm.status = res.data.Status;
-                vm.website = res.data.web;
-            });
+            mainService.GetWebsites().then(function (res) {
+               
+                vm.website = res.data;
+                console.log("vm.status", vm.website);
+              
+            }),
+              mainService.GetProducts().then(function (res) { 
+                  vm.products = res.data; console.log("GetProducts", vm.products); }),
+
+           mainService.GetSources().then(function (res) { 
+               vm.sources = res.data; console.log("vm.sources", vm.sources); }),
+            mainService.GetDesignations().then(function (res) {
+                vm.designation = res.data; console.log("vm.designation", vm.designation); }),
+             mainService.GetPriorities().then(function (res) { 
+                 vm.Priority = res.data; console.log(" vm.Priority", vm.Priority); })
+          
+     
+         
+         
+
+
+
+
+            
         }
 
 

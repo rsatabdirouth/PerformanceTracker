@@ -24,12 +24,9 @@ namespace Pioneer.PerformanceTracker.Api.Controllers
             {
                 SalesContext _db = new SalesContext();
                 var products = _db.Products.ToList();
-                var SalesData = new SalesData()
-                {
-                    product = products
-                };
+               
 
-                return Ok(SalesData);
+                return Ok(products);
             }
             catch (Exception exception)
             {

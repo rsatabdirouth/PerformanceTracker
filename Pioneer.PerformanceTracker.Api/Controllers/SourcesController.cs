@@ -26,11 +26,8 @@ namespace Pioneer.PerformanceTracker.Api.Controllers
             {
                 SalesContext _db = new SalesContext();
                 var sources = _db.BuyerSources.ToList();
-                var SalesData = new SalesData() {
-                    Source = sources
-                    
-                };
-                return Ok(SalesData);
+              
+                return Ok(sources);
 
 
 

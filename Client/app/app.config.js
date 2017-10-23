@@ -49,7 +49,9 @@
 
 .when("/levels/:levelId?", { templateUrl: "./app/components/levels/_level.html", controller: "levelCtrl as level" })
 
-
+//testnew
+.when("/communicationlist", { templateUrl: "./app/components/communications/communicationlist/_communicationlist.html", controller: "commuicationlistCtrl as commuicationlist" })
+//
 
 
 

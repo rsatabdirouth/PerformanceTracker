@@ -1,5 +1,14 @@
 ﻿{{communication.title}}
 <div style="overflow:scroll;">
+    <select ng-change="communication.limitChange(communication.limit)" ng-model="communication.limit">
+        <option ng-value="">Please enter the no of page</option>
+        <option ng-value="5">5</option>
+        <option ng-value="10">10</option>
+        <option ng-value="20">20</option>
+        <option ng-value="30">30</option>
+        <option ng-value="40">40</option>
+        <option ng-value="50">50</option>
+    </select>
     <table>
         <thead>
             <tr>
@@ -19,12 +28,13 @@
 
             </tr>
         </thead>
-        <tbody ng-repeat="communicate in communication.pagedPost">
+        <!--<tbody ng-repeat="communicate in communication.pagedPost">-->
+        <tbody ng-repeat="communicate in communication.communications">
             <tr>
                 <td>{{communicate.buyer.BuyerCompany}}</td>
                 <td>{{communicate.BuyerID}}</td>
                 <td><a href="/#!/followupdetails/{{communicate.CommunicationID}}">{{communicate.CommunicationID}}</a></td>
-               
+
                 <td>{{communicate.FirstDateOfInteraction}}</td>
                 <td>{{communicate.communicatedBy}}</td>
                 <td>{{communicate.Feedback}}</td>
@@ -44,7 +54,7 @@
     </table>
 </div>
 
-<div>
+<!--<div>
     <nav aria-label="...">
         <ul class="pagination">
             <li ng-class="communication.currentpage == 1? 'disabled': ''">
@@ -60,7 +70,7 @@
             </li>
         </ul>
     </nav>
-</div>
+</div>-->
 
 
 <h4>sorting</h4>

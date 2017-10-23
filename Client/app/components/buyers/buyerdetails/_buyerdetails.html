@@ -113,7 +113,7 @@ placeholder="Enter AlternativeNumber" id="AlternativeNumber" name="AlternativeNu
             <select id="BuyerPriority" ng-model="buyerdetails.buyer.BuyerPriority" ng-required="true" class="inputform2" name="BuyerPriority" title="Enter BuyerPriority">
                 <option ng-value="" label="Please select"></option>
 
-                <option ng-repeat="priority in buyerdetails.priorities" ng-value="priority.ID"
+                <option ng-repeat="priority in buyerdetails.Priority" ng-value="priority.ID"
                         ng-selected="{{ priority.Selected == true }}">
                     {{priority.Level}}
                 </option>
