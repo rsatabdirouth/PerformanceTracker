@@ -1,10 +1,152 @@
-﻿<!DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html ng-app="PerformanceTrackerApp" ng-controller="mainCtrl">
 <head>
-    <title></title>
+    <link rel="shortcut icon" href="">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="./assets/css/Style.css" rel="stylesheet" />
+    <style>
+        [ng\:cloak],
+        [ng-cloak],
+        [data-ng-cloak],
+        [x-ng-cloak],
+        .ng-cloak,
+        .x-ng-cloak {
+            display: none !important;
+        }
+
+         table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+
+
+        /*NavBar*/
+        ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #111;
+}
+
+.active {
+    background-color: #4CAF50;
+}
+</style>
+
+
+   
+    
+
+    <title>{{title}}</title>
 	<meta charset="utf-8" />
 </head>
 <body>
+
+    <ul>
+        <li><a href="/">BuyerList</a></li>
+        <li><a href="/#!/communicationlist">CommunicationList</a></li>
+        <li><a href="/#!/buyerdetails">Buyer</a></li>
+      
+        <li><a href="/#!/sourcelist">Source</a></li>
+        <li><a href="/#!/mediumslist">Meduim</a></li>
+      
+          <li><a href="/#!/productlists">Product</a></li>
+        <li><a href="/#!/status">Status</a></li>
+        <li><a href="/#!/designations">Designations</a></li>
+       
+        <!--  --------                -->
+         <li><a href="/#!/followupdetails">FollowUp</a></li>
+        <!--  --------                -->
+
+        <li><a href="/#!/websites">Website</a></li>
+        <li style="float:right"><a class="active" href="/#!/levels">Level</a></li>
+    </ul>
+   
+
+    <ng-view></ng-view>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular-route.js"></script>
+    <!--jquery-->
+    
+    <script src="app/app.module.js"></script>
+    <script src="app/app.config.js"></script>
+    <script src="app/app.ctrl.js"></script>
+    <script src="app/app.mainService.js"></script>
+    
+   
+
+    
+    
+    
+    
+    <!--ProductControllers-->
+    <script src="app/components/products/productlists/productlist.Ctrl.js"></script>
+    <script src="app/components/products/productdetails/productDetails.Ctrl.js"></script>
+
+    <!--souceControllers-->
+    <script src="app/components/sources/sourcelist/sourcelist.Ctrl.js"></script>
+   
+    <!--buyerController-->
+    <script src="app/components/buyers/list/list.Ctrl.js"></script>
+    <script src="app/components/buyers/buyerdetails/buyerdetails.Ctrl.js"></script>
+    <!--levelControllers-->
+ 
+    <script src="./app/components/levels/level.Ctrl.js"></script>
+    <!--CommunicationsControllers-->
+    <script src="app/components/communications/list/communicationlist.Ctrl.js"></script>
+
+    <script src="app/components/communications/followupdetails/followup.Ctrl.js"></script>
+
+    <!--mediumsControllers-->
+
+    <script src="app/components/mediums/mediumslist/medium.Ctrl.js"></script>
+    <!--WebsiteControllers-->
+
+    <script src="app/components/websites/websitelist.Ctrl.js"></script>
+   
+    <!--StatusControllers-->
+
+    <script src="./app/components/status/status.Ctrl.js"></script>
+
+    <!--Designations-->
+    <script src="app/components/designations/designation.Ctrl.js"></script>
+
+    <!----newtest-->
+
+
+    <script src="app/components/communications/communicationlist/commuicationlist.Ctrl.js"></script>
+    
 
 </body>
 </html>
