@@ -9,7 +9,7 @@
 
     function mainCtrl($rootScope) {
         $rootScope.title = "Performance Tracker";
-        console.log("test1");
+        //console.log("test1");
         /* jshint validthis:true */
         var vm = this;
 

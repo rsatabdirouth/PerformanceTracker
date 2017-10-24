@@ -46,8 +46,8 @@
         vm.BuyerCompany = "";
         vm.buyernamechange = buyernamechange;
         function buyernamechange(BuyerCompany) {
-            vm.query['$filter'] = "contains(BuyerCompany,'test')";
-            //vm.query['$filter'] = "contains(BuyerCompany, + BuyerCompany)";
+           // vm.query['$filter'] = "contains(BuyerCompany,'test')";
+            vm.query['$filter'] = "contains(BuyerCompany, + BuyerCompany)";
             search();
         }
 //product
@@ -93,15 +93,15 @@
         $rootScope.title = "Buyer List";
 
         activate();
-        function activate() {
+   function activate() {
     
-            mainService.GetProducts().then(function (res) { vm.product = res.data; console.log("GetProducts", vm.product); }),
+  mainService.GetProducts().then(function (res) { vm.product = res.data; console.log("GetProducts", vm.product); }),
 
-           mainService.GetSources().then(function (res) { vm.Source = res.data; console.log("vm.Source", vm.Source); }),
-            mainService.GetPriorities().then(function (res) { vm.Priority = res.data; console.log(" vm.Priority", vm.Priority); }),
-             mainService.GetWebsites().then(function (res) {
-               
-                 vm.website = res.data;
+  mainService.GetSources().then(function (res) { vm.Source = res.data; console.log("vm.Source", vm.Source); }),
+
+  mainService.GetPriorities().then(function (res) { vm.Priority = res.data; console.log(" vm.Priority", vm.Priority); }),
+
+  mainService.GetWebsites().then(function (res) {vm.website = res.data;
                  console.log("vm.status", vm.website);
               
              }),

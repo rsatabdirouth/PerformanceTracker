@@ -31,7 +31,7 @@
             if (vm.sourceId > 0) {
               vm.GetSourceById(vm.sourceId);
             }
-            mainService.GetSources().then(function (res) { vm.sources = res.data.Source; console.log("vm.sources", vm.sources); })
+            mainService.GetSources().then(function (res) { vm.sources = res.data; console.log("vm.sources", vm.sources); })
 
         }
 

@@ -7,6 +7,7 @@ using System.Web.Http;
 using System.Web.Http.Cors;
 using Pioneer.PerformanceTracker.Api.Models;
 using Pioneer.PerformanceTracker.Api.ViewModels;
+using System.Web.Http.OData;
 
 namespace Pioneer.PerformanceTracker.Api.Controllers
 {
@@ -18,30 +19,14 @@ namespace Pioneer.PerformanceTracker.Api.Controllers
         public static int Id = 1;
         SalesContext _db = new SalesContext();
 
-        [HttpGet]
+        [HttpGet,EnableQuery()]
         public IHttpActionResult GetCommunications()
         {
             try
             {
-                var buyer = _db.BuyerInfos.ToList();
-                var communications = _db.CommunicationInfos.ToList();
-                var status = _db.SalesStatus.ToList();
-                var transferredto = _db.TransferredTo.ToList();
-                var medium = _db.CommunicationMediums.ToList();
-               
-
-                
-                var SalesData = new SalesData()
-                {
-                    BuyerInfo = buyer,
-                    Status = status,
-                    CommunicationMedium = medium,
-                    communicationChain = communications,
-                    TransferredTo = transferredto,
-                   
-
-                };
-                return Ok(SalesData);
+             
+                var communications = _db.CommunicationInfos.AsQueryable();
+                return Ok(communications);
             }
             catch (Exception ex)
             { return InternalServerError(ex); }
@@ -89,7 +74,6 @@ namespace Pioneer.PerformanceTracker.Api.Controllers
                   
 
                     _db.SaveChanges();
-                   // existcommunication.IsFollowupSubmitted = true;
                     return Ok(existcommunication);
 
                 }
@@ -97,7 +81,7 @@ namespace Pioneer.PerformanceTracker.Api.Controllers
                     model.CommunicationID = Id++;
                     _db.CommunicationInfos.Add(model);
                     _db.SaveChanges();
-                  //  model.IsFollowupSubmitted = true;
+                
                   
                 }
 

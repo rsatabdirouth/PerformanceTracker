@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using Pioneer.PerformanceTracker.Api.Models;
+using System.Web.Http.OData;
 
 namespace Pioneer.PerformanceTracker.Api.Controllers
 {
@@ -16,12 +17,12 @@ namespace Pioneer.PerformanceTracker.Api.Controllers
         public LevelsController()
         { }
         public static int Id = 1;
-        [HttpGet]
+        [HttpGet,EnableQuery()]
         public IHttpActionResult GetLevels()
         {
             try
             {
-                var levels = _db.TransferredTo.ToList();
+                var levels = _db.TransferredTo.AsQueryable();
                 return Ok(levels);
 
             }

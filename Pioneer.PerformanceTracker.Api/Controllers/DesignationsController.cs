@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using Pioneer.PerformanceTracker.Api.Models;
+using System.Web.Http.OData;
 
 namespace Pioneer.PerformanceTracker.Api.Controllers
 {[EnableCors("*","*","*")]
@@ -14,12 +15,12 @@ namespace Pioneer.PerformanceTracker.Api.Controllers
               public static int Id = 1;
         public DesignationsController() { }
 
-        [HttpGet]
+        [HttpGet,EnableQuery()]
         public IHttpActionResult GetDesignations()
         { try
             {
                 SalesContext _db = new SalesContext();
-                var Designations = _db.BuyerDesignations.ToList();
+                var Designations = _db.BuyerDesignations.AsQueryable();
                 return Ok(Designations);
             }
 

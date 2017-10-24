@@ -17,10 +17,21 @@
 
         vm.websites = [];
         vm.website = {};
-        
         vm.websiteId;
+        vm.Search = Search;
         vm.SaveWebsites = SaveWebsites;
         vm.GetWebsiteById = GetWebsiteById;
+
+        vm.limit = 3;
+        vm.limitChange = limitChange;
+        vm.query = { '$top': vm.limit };
+       
+        function limitChange(limit)
+        {
+            
+            vm.query['$top'] = limit;
+            Search();
+        }
         
 
       
@@ -32,12 +43,17 @@
                 vm.GetWebsiteById(vm.websiteId);
             }
 
-            mainService.GetWebsites().then(
-                function (response) { vm.websites = response.data; console.log(vm.websites); },
-                function (error) { console.log(error); });
+            Search();
 
         }
         activate();
+
+        function Search()
+        {
+            mainService.GetWebsites().then(
+               function (response) { vm.websites = response.data; console.log(vm.websites); },
+               function (error) { console.log(error); });
+        }
 
         function GetWebsiteById(){
             mainService.GetWebsiteById(vm.websiteId).then(function(res){vm.website=res.data;

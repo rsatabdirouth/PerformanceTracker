@@ -175,11 +175,12 @@
 
         
        //productfunction
-        function GetProducts() {
+        function GetProducts(query) {
             return $http(
                 {
                     method: 'GET',
                     url: 'http://localhost:8057/api/Products/GetProducts',
+                    params: query
                 }
 
                 );
@@ -220,10 +221,11 @@
         }
 
         //website function
-        function GetWebsites() {
+        function GetWebsites(query) {
          return   $http({
                 method: 'GET',
-                url: 'http://localhost:8057/api/Websites/GetWebsites'
+                url: 'http://localhost:8057/api/Websites/GetWebsites',
+                params: query
             });
 
 

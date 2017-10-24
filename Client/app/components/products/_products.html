@@ -1,0 +1,59 @@
+﻿{{product.title}}
+<div class="Container">
+<div class="col-md-6 col-lg-6 col-sm-12">
+    <select ng-change="product.limitChange(product.limit)" ng-model="product.limit">
+        <option ng-value="5">5</option>
+        <option ng-value="10">10</option>
+        <option ng-value="20">20</option>
+        <option ng-value="30">30</option>
+        <option ng-value="40">40</option>
+        <option ng-value="50">50</option>
+    </select>
+
+    <table>
+        <thead>
+
+            <tr>
+                <th ng-click="desc = !desc; product.orderBy('ID', desc)">ProductId</th>
+                <th ng-click="desc = !desc; product.orderBy('ProductName', desc)">ProductName</th>
+            </tr>
+        </thead>
+        <tbody ng-repeat="product in product.products">
+            <tr>
+                <td><a href="/#!/products/{{product.ID}}">{{product.ID}}</a></td>
+                <td><a href="/#!/products/{{product.ID}}">{{product.ProductName}}</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="col-md-6 col-lg-6 col-sm-12">
+
+   
+    <div ng-cloak>
+   <p> ProductId:      {{product.product.ID}}</p></br>
+   <p>ProductName:    {{product.product.ProductName}}</p> </br>
+    </div>
+
+    <ng-form name="ProductNameform">
+        <label>ProductName</label>
+        <input type="text" ng-model="product.product.ProductName" ng-required="true" ng-message="Enter ProductName" name="ProductName" id="ProductName" class="inputform2" placeholder="Please enter the productname" />
+
+        <div class="button-div">
+
+            <button ng-click="product.SaveProducts()" ng-disabled="ProductNameform.$invalid" class="guide"> Save</button>
+            <button ng-click="product.product= {}" class="guide"> Reset</button>
+          
+            <a href="/">Home</a>
+
+        </div>
+
+
+    </ng-form>
+</div>
+    Search
+    <input id="Id" name="Id" ng-model="product.Id" ng-change="product.productidchange(product.Id)">
+</div>
+
+
+
+

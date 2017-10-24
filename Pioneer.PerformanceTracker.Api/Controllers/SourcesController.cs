@@ -7,6 +7,7 @@ using System.Web.Http;
 using System.Web.Http.Cors;
 using Pioneer.PerformanceTracker.Api.Models;
 using Pioneer.PerformanceTracker.Api.ViewModels;
+using System.Web.Http.OData;
 
 namespace Pioneer.PerformanceTracker.Api.Controllers
 {
@@ -19,13 +20,13 @@ namespace Pioneer.PerformanceTracker.Api.Controllers
 
 
 
-        [HttpGet]
+        [HttpGet,EnableQuery()]
         public IHttpActionResult GetSources() {
 
             try
             {
                 SalesContext _db = new SalesContext();
-                var sources = _db.BuyerSources.ToList();
+                var sources = _db.BuyerSources.AsQueryable();
               
                 return Ok(sources);
 

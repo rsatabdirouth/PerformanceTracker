@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using System.Web.Http.OData;
 
 namespace Pioneer.PerformanceTracker.Api.Controllers
 {
@@ -15,13 +16,13 @@ namespace Pioneer.PerformanceTracker.Api.Controllers
         public WebsitesController()
         { }
         public static int Id = 1;
-        [HttpGet]
+        [HttpGet,EnableQuery()]
         public IHttpActionResult GetWebsites()
         {
             try
             {
                 SalesContext _db = new SalesContext();
-                var websites = _db.Websites.ToList();
+                var websites = _db.Websites.AsQueryable();
                 return Ok(websites);
 
 

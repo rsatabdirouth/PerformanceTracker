@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using System.Web.Http.OData;
 
 namespace Pioneer.PerformanceTracker.Api.Controllers
 {
@@ -18,12 +19,12 @@ namespace Pioneer.PerformanceTracker.Api.Controllers
         {
         }
 
-        [HttpGet]
+        [HttpGet,EnableQuery()]
         public IHttpActionResult GetMediums()
         {
             try
             {
-                var communicationmedium = _db.CommunicationMediums.ToList();
+                var communicationmedium = _db.CommunicationMediums.AsQueryable();
                 
                 return Ok(communicationmedium);
             }

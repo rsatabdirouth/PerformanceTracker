@@ -32,16 +32,18 @@ namespace Pioneer.PerformanceTracker.Api.Migrations
             //  var  ID = 1;
            // context.BuyerSources.Add(new BuyerSource() { ID = 1, Source = "msn" });
           context.Products.Add(new Product() { ID = 1, ProductName = "Mortgage" });
-            context.Products.Add(new Product() { ID = 2,ProductName="Loan"});
+          context.Products.Add(new Product() { ID = 2,ProductName="Loan"});
           context.BuyerPriorities.Add(new BuyerPriority() { ID = 1, Level = "Normal" });
+          context.BuyerPriorities.Add(new BuyerPriority() { ID=2 ,Level="Urgent"});
+          context.BuyerPriorities.Add(new BuyerPriority() { ID = 3, Level = "Poor" });
           context.BuyerSources.Add(new BuyerSource() { ID=1,Source="google"});
-            context.SalesStatus.Add(new SalesStatus() { ID = 1, Status = "Interested" });
-            context.SalesStatus.Add(new SalesStatus() { ID = 2, Status = "Sales Brochure send" });
+          context.SalesStatus.Add(new SalesStatus() { ID = 1, Status = "Interested" });
+          context.SalesStatus.Add(new SalesStatus() { ID = 2, Status = "Sales Brochure send" });
 
 
 
           context.CommunicationMediums.Add(new CommunicationMedium() { ID=1,Medium="Email"});
-          context.TransferredTo.Add(new TransferredTo() { ID=1,FollowupBy="Prajim1"});
+          context.TransferredTo.Add(new TransferredTo() { ID=1,FollowupBy="ReachOut team"});
           context.BuyerDesignations.Add(new BuyerDesignation() { ID=1,designation="CEO"});
           context.Websites.Add(new Website() { ID=1,WebsiteName="www.Pioneerweb.co.uk"});
           context.BuyerInfos.Add(new BuyerInfo() {
