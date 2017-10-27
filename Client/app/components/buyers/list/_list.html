@@ -1,6 +1,22 @@
 ﻿{{buyerlist.title}}
 Buyer List
-
+<!--<div>
+    <nav aria-label="...">
+        <ul class="pagination">
+            <li ng-class="buyerlist.currentPage == 1? 'disabled': ''">
+                <a href="javascript:" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <li ng-click="buyerlist.pageChange(page)" ng-repeat="page in buyerlist.pages" ng-class="buyerlist.currentPage == page ? 'active' : ''"><a href="javascript:">{{page}}</a></li>
+            <li ng-class="buyerlist.currentPage == buyerlist.pages.length ? 'disabled': ''">
+                <a href="javascript:" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>-->
 
 
 <div class="Container table table-striped"  style="overflow:scroll;">
@@ -66,42 +82,27 @@ Buyer List
    
 
 </div>
-<div>
-    <!--<nav aria-label="...">
-        <ul class="pagination">
-            <li ng-class="buyerlist.currentPage == 1? 'disabled': ''">
-                <a href="javascript:" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                </a>
-            </li>
-            <li ng-click="buyerlist.pageChange(page)" ng-repeat="page in buyerlist.pages" ng-class="buyerlist.currentPage == page ? 'active' : ''"><a href="javascript:">{{page}}</a></li>
-            <li ng-class="buyerlist.currentPage == buyerlist.pages.length ? 'disabled': ''">
-                <a href="javascript:" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                </a>
-            </li>
-        </ul>
-    </nav>-->
-</div>
+
 
     <div class="Container">
     <h4>Sorting</h4>
     <ng-form id="filterbuyer" name="filterbuyer">
-        <!--<div class="col-md-3">
+        <div class="col-md-4">
             <h4>SourceList</h4>
-            <select id="sourceid" ng-change="buyerlist.sourceidchange(buyerlist.sourceid)" ng-model="buyerlist.sourceid">
-                <option value="0" label="Please Select"></option>
-                <option ng-repeat="source in buyerlist.Source" value="{{Source.ID}}"
+            <select id="sourceid" name="sourceid" ng-change="buyerlist.sourceidchange(buyerlist.sourceid)" ng-model="buyerlist.sourceid">
+                <option value="">Please select</option>
+
+                <option ng-repeat="source in buyerlist.Source" value="{{source.ID}}"
                         ng-selected="{{ source.Selected == true }}">
                     {{source.Source}}
                 </option>
             </select>
-        </div>-->
+        </div>
 
-        <div class="col-md-3">
+        <div class="col-md-4">
             <h4>ProductLookingFor</h4>
             <select id="productid" ng-change="buyerlist.productidchange(buyerlist.productid)" ng-model="buyerlist.productid">
-                <option value="0" label="Please select"></option>
+                <option value="">Please select</option>
 
                 <option ng-repeat="product in buyerlist.product" value="{{product.ID}}"
                         ng-selected="{{ product.Selected == true }}">
@@ -111,11 +112,11 @@ Buyer List
 
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-4">
             <h4>Search Website</h4>
             <select id="websiteid" ng-change="buyerlist.websiteidchange(buyerlist.websiteid)" ng-model="buyerlist.websiteid">
 
-                <option value="0" label="Please Select"></option>
+                <option value="">Please select</option>
                 <option ng-repeat="web in buyerlist.website"
                         value="{{web.ID}}" ng-selected="{{web.Selected==true}}">
                     {{web.WebsiteName}}
@@ -125,21 +126,25 @@ Buyer List
         </div>
 
       
-        <div class="col-md-3">
+        <div class="col-md-4">
             <h4>Search by BuyerID </h4>
             <input type="text" id="BuyerId" name="BuyerId" 
          ng-change="buyerlist.buyeridchange(buyerlist.BuyerId)" ng-model="buyerlist.BuyerId"/>
         </div>
-        <div class="col-md-3">
-            <h4>Search by BuyerName </h4>
+        <div class="col-md-4">
+            <h4>BuyerCompany </h4>
             <input type="text" id="BuyerCompany" name="BuyerCompany" ng-model="buyerlist.BuyerCompany" 
             ng-change="buyerlist.buyernamechange(buyerlist.BuyerCompany)" />
         </div>
-        <div class="col-md-3">
-            <h4>SearchByDate</h4>
-            <input type="date" id="date" />
+        <div class="col-md-4">
+            <h4>GeneratedDate</h4>
+            <!--<input  id="generatedDate" name="generatedDate" ng-model="buyerlist.generatedDate" 
+                   ng-change="buyerlist.dateChange(buyerlist.generatedDate)"/>-->
+            <ng-datepicker id="generatedDate" name="generatedDate" ng-model="buyerlist.generatedDate" locale="sl" format="YYYY-MM-DDTHH:mm:ss" view-format="Do MMMM YYYY" ng-change="buyerlist.dateChange(buyerlist.generatedDate)">
+            </ng-datepicker>
         </div>
 
+      
 
 
 
@@ -148,7 +153,8 @@ Buyer List
             <!--<button ng-click="buyerlist.filterdata('buyerlist.buyers.BuyerId')">Search</button>-->
             <!--<button ng-click="buyerlist.filterdata('buyerlist.buyers.BuyerId')">Search</button>-->
 
-            <button ng-click="buyerlist.form" ng-class="guide">Reset</button>
+            <!--<button ng-click="buyerlist.form" ng-class="guide">Reset</button>-->
+            <button class="guide" ng-click="buyerlist.reset() && filterbuyer.$setPristine()"> Reset</button>
             <a href="/">Home</a>
         </div>
 
@@ -160,7 +166,11 @@ Buyer List
 
     </ng-form>
 </div>
-<!--<ng-form name="filterform">
-    <button  type="submit" id="submit" name="submit" ng-click="buyerdetails.test()">test</button>
-    <input type="submit" id="submit" name="submit" ng-click="buyerdetails.test()"/>
-</ng-form>-->
+
+<script>
+  $( function() {
+      $("#generatedDate").datepicker();
+     
+  } );
+</script>
+

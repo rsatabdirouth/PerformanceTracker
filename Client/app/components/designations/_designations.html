@@ -2,11 +2,17 @@
 {{designation.title}}
 <div class="Container">
     <div class="col-md-6">
+        <select ng-model="designation.limit" ng-change="designation.limitChange(designation.limit)">
+            <option ng-value="2">2</option>
+            <option ng-value="5">5</option>
+            <option ng-value="10">10</option>
+        </select>
         <table>
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Designation</th>
+                    <th ng-click="desc = !desc; designation.orderBy('ID', desc)">ID</th>
+                    <th ng-click="desc = !desc; designation.orderBy('designation', desc)">Designation</th>
+                 
                 </tr>
             </thead>
             <tbody ng-repeat="x in designation.designations">
@@ -30,15 +36,15 @@
     <div class="col-md-6">
         <div ng-cloak>
             <p>Id :{{designation.designation.ID}}</p></br>
-            <p>Medium:{{designation.designation.designation}}</p></br>
+            <p>Designation:{{designation.designation.designation}}</p></br>
 
         </div>
-        <ng-form name="mediumform">
-            Medium:
+        <ng-form name="designationform">
+            Designation:
             <input type="text" ng-model="designation.designation.designation" ng-required="true" ng-message="please enter designation" placeholder="please enter designation" id="designation" name="designation" ng-class="inputform2" />
 <div>
-    <button ng-click="designation.SaveDesignations()" ng-disabled="mediumform.$invalid" class="guide">Save</button>
-    <button ng-click="designation.designation={}"class="guide">Refresh</button>
+    <button ng-click="designation.SaveDesignations()" ng-disabled="designationform.$invalid" class="guide">Save</button>
+    <button ng-click="designation.designation={} && designationform.$setPristine()"class="guide">Refresh</button>
 </div>
            
 
@@ -46,4 +52,10 @@
       
     </div>
 
+    <ng-form name="SearchDesignation">
+       Search: <input  id="designationName" name="designationName" ng-model="designation.designationName" 
+                      ng-change="designation.designationchange(designation.designationName)"/>
+        
+        <button ng-click="designation.reset() && SearchDesignation.$setPristine()">Reset</button>
+    </ng-form>
 </div>

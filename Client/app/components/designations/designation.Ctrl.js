@@ -20,6 +20,52 @@
         vm.GetDesignationById = GetDesignationById;
         vm.SaveDesignations = SaveDesignations;
 
+        //paginations
+        vm.limit = 2;
+        vm.limitChange = limitChange;
+        vm.query = { '$top': vm.limit };
+        //limitchange
+        function limitChange(limit)
+        {
+            console.log("limit",limit);
+            vm.query['$top'] = limit;
+            search();
+
+        }
+        //search
+        vm.designationName = "";
+        vm.designationchange = designationchange;
+        function designationchange(designationName)
+        {
+            console.log("designation", designationName);
+           // vm.query['$filter'] = "indexof(designation,'" + designation + "') ne -1";
+            vm.query['$filter'] = "indexof(designation, '" + designationName + "') ne -1";
+                search();
+        
+        }
+        
+        //orderby
+        vm.orderBy = orderBy;
+
+        function orderBy(order, desc) {
+            desc = !desc;
+            console.log(desc);
+            if (desc) {
+                order = order + " desc";
+            }
+            vm.query['$orderby'] = order;
+            search();
+        }
+
+   
+        //reset
+        vm.reset = reset;
+        function reset()
+        {
+            vm.designationName = "";
+        }
+
+
 
 
         function activate() {
@@ -30,12 +76,16 @@
                 vm.GetDesignationById(vm.DesignationId);
             }
            
-            mainService.GetDesignations().then(function (res) {
+            search();
+        }
+        activate();
+        function search()
+        {
+            mainService.GetDesignations(vm.query).then(function (res) {
                 vm.designations = res.data;
                 console.log(" vm.Designations", vm.designations);
             })
         }
-        activate();
 
         function GetDesignationById() {
             mainService.GetDesignationById(vm.DesignationId).then(function (res) {

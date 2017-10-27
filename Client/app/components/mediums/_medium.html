@@ -1,30 +1,39 @@
 ﻿{{medium.title}}
 <div class="Container">
     <div class="col-md-6">
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Medium</th>
-                </tr>
-            </thead>
-            <tbody ng-repeat="x in medium.mediums">
-                <tr>
-                    <td>
-                   {{x.ID}}
-                    </td>
-                    <td>
-                        <a href="/#!/mediumslist/{{x.ID}}">
+        <select ng-change="medium.limitChange(medium.limit)" ng-model="medium.limit">
+           
 
-                  {{x.Medium}}
-                    </a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <!--<button><a href="/#!/mediumslist/">Addmedium</a></button>-->
-    <button><a href="/">Back</a></button>   
-    </div>
+
+                <option ng-value="2">2</option>
+                <option ng-value="5">5</option>
+                <option ng-value="10">10</option>
+            </select>
+            <table>
+                <thead>
+                    <tr>
+                        <th ng-click="desc!=desc; medium.orderby('ID',desc)">ID</th>
+
+                        <th ng-click="desc = !desc; medium.orderBy('Medium', desc)">Medium</th>
+                    </tr>
+                </thead>
+                <tbody ng-repeat="x in medium.mediums">
+                    <tr>
+                        <td>
+                            {{x.ID}}
+                        </td>
+                        <td>
+                            <a href="/#!/mediumslist/{{x.ID}}">
+
+                                {{x.Medium}}
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <!--<button><a href="/#!/mediumslist/">Addmedium</a></button>-->
+            <button><a href="/">Back</a></button>
+</div>
    
     <div class="col-md-6">
         <div ng-cloak>
@@ -37,10 +46,17 @@
             <input type="text" ng-model="medium.medium.Medium" ng-required="true" ng-mouseover="red" ng-message="medium is required" id="Medium" name="Medium" class="inputform2" placeholder="please enter Medium" />
             <div class="button-div">
                 <button ng-click="medium.SaveMediums()" ng-disabled="Mediumform.$invalid" class="guide">Save</button>
-                <button ng-click="medium.medium={}">Refresh</button>
+                <button ng-click="medium.medium={} && Mediumform.$setPristine()">Refresh</button>
             </div>
            
 
+        </ng-form>
+        <ng-form name="searchmedium">
+            <input id="mediumname" name="mediumname" ng-model="medium.mediumname" 
+                   ng-change="medium.mediumchange(medium.mediumname)"/>
+            <button ng-click="medium.reset()&&searchmedium.$setPristine()">
+                Reset
+            </button>
         </ng-form>
 
    

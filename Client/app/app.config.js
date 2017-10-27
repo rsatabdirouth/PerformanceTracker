@@ -1,4 +1,5 @@
-﻿(function () {
+﻿/// <reference path="components/products/_products.html" />
+(function () {
     'use strict';
 
     angular.module('PerformanceTrackerApp')
@@ -12,12 +13,7 @@
      controller: 'buyerListCtrl as buyerlist'
          })
 
-   //.when("/communications/list", {
-   //  templateUrl: './app/components/communications/list/_communicationlist.html',
-   //  controller: 'communicationlist as communication'
-   //     })
-
-   .when("/buyerdetails/:buyerId?", {
+.when("/buyerdetails/:buyerId?", {
     templateUrl: './app/components/buyers/buyerdetails/_buyerdetails.html',
     controller: 'buyerdetailsCtrl as buyerdetails'
         })

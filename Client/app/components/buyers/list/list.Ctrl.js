@@ -16,16 +16,16 @@
         vm.product = [];
         vm.website = [];
 
-        vm.form = {};
-
+       
 
         vm.pages = [];
-        vm.Itemsperpage = 1;
+        vm.Itemsperpage = 10;
         vm.totalbuyer;
         vm.totalBuyerPage;
         vm.currentPage = 1;
         vm.pagedPost = [];
-      //  vm.pageChange = pageChange;
+        //
+        vm.pageChange = pageChange;
         vm.limit = 5;
         vm.query = {
             '$top' : vm.limit
@@ -38,7 +38,7 @@
         vm.buyerid;
         vm.buyeridchange = buyeridchange;
         function buyeridchange(buyerid) {
-            vm.query['$filter'] = 'BuyerId eq ' +buyerid;
+            vm.query['$filter'] = 'BuyerId eq ' + buyerid;
             search();
         }
 
@@ -46,10 +46,33 @@
         vm.BuyerCompany = "";
         vm.buyernamechange = buyernamechange;
         function buyernamechange(BuyerCompany) {
-           // vm.query['$filter'] = "contains(BuyerCompany,'test')";
-            vm.query['$filter'] = "contains(BuyerCompany, + BuyerCompany)";
+            console.log("BuyerCompany", BuyerCompany);
+       
+
+          //  vm.query['$filter'] = "indexof(BuyerCompany, 'test')  ne -1";
+          
+            vm.query['$filter'] = "indexof(BuyerCompany, '" + BuyerCompany + "') ne -1";
+          
+        
             search();
         }
+
+//search by date
+        vm.generatedDate = "";
+        vm.dateChange = dateChange;
+        function dateChange(generatedDate)
+        {
+            alert("datechange");
+            console.log("generatedDate", generatedDate);
+        //    vm.query['$filter'] = 'Date eq' + generatedDate;
+            //   vm.query['$filter'] = "year(Date) eq" + 2016 + "&& month(Date) eq" + 10 + " && day(Date) eq" + 20;
+           // vm.query[' $filter'] = 'year(Date) eq' + 2016;
+          //  vm.query['$filter'] = "date(Date) eq" + generatedDate;
+           // vm.query['$filter'] = 'Date gt DateTime' + '2017-10-24T09:13:28';
+            vm.query['$filter'] = "Date gt DateTime'" + generatedDate +"'";
+            search();
+        }
+
 //product
         vm.productid;
         vm.productidchange = productidchange;
@@ -76,24 +99,12 @@
 
         }
 
-
-
-
-        //
-
-        vm.filterbuyer = {};
         vm.filterdata = filterdata;
-       
-
-        //
-        vm.BuyerId ;
-
-
-
+        vm.BuyerId;
         $rootScope.title = "Buyer List";
 
         activate();
-   function activate() {
+        function activate() {
     
   mainService.GetProducts().then(function (res) { vm.product = res.data; console.log("GetProducts", vm.product); }),
 
@@ -106,45 +117,7 @@
               
              }),
             search();
-           
-            //mainService.getBuyers().then(function (res) {
-            //    vm.buyers = res.data;
-            //    console.log("test", vm.buyers);
-            //    vm.communicationdata = res.data.communicationChain;
-            //    console.log("communicationChain", vm.communicationdata);
-            //    vm.buyerdata = res.data.BuyerInfo;
-            //    console.log("buyerdata", vm.buyerdata);
-            //    vm.Designation = res.data.Designation;
-            //    console.log("Designation", vm.Designation);
-            //    vm.Priority = res.data.Priority;
-            //    console.log("Priority", vm.Priority);
-            //    vm.Source = res.data.Source;
-            //    console.log("Source", vm.Source);
-            //    vm.Status = res.data.Status;
-            //    console.log("Status", vm.Status);
-            //    vm.TransferredTo = res.data.TransferredTo;
-            //    console.log("TransferredTo", vm.TransferredTo);
-            //    vm.CommunicationMedium = res.data.CommunicationMedium;
-            //    console.log("CommunicationMedium", vm.CommunicationMedium);
-            //    vm.product = res.data.product;
-            //    console.log("product", vm.product);
-            //    vm.web = res.data.web;
-            //    console.log("web", vm.web);
-
-            //    vm.totalbuyer = vm.buyerdata.length;
-            //    console.log("length.Buyer", vm.totalbuyer);
-            //    vm.totalBuyerPage = Math.ceil(vm.totalbuyer / vm.Itemsperpage);
-            //    console.log("TotalBuyerpage", vm.totalBuyerPage);
-
-            //    for (var i = 1; i <= vm.totalBuyerPage; i++) {
-            //        vm.pages.push(i);
-            //    }
-
-
-            //    vm.pageChange(vm.pages[--vm.currentPage]);
-
-            //})
-        }
+           }
 
         function limitChange(limit) {
             vm.query['$top'] = limit;
@@ -172,44 +145,63 @@
 
         }
 
-        function filterbuyerid()
-        {
-
-
-
-        }
-        
-
+       
 
 
         function search() {
             mainService.GetBuyers(vm.query).then(function (res) {
                 vm.buyers = res.data;
                 console.log("vm.buyers", vm.buyers);
-            });
+                vm.totalbuyer = vm.buyers.length;
+                console.log("length.Buyer", vm.totalbuyer);
+                vm.totalBuyerPage = Math.ceil(vm.totalbuyer / vm.Itemsperpage);
+                console.log("TotalBuyerpage", vm.totalBuyerPage);
+
+               for (var i = 1; i <= vm.totalBuyerPage; i++) {
+                       vm.pages.push(i);
+                    }
+
+
+                    vm.pageChange(vm.pages[--vm.currentPage]);
+
+                })
+            }
+        
+
+
+
+        function pageChange(page) 
+        {
+            console.log('the page pased is', page);
+            vm.pagedPost = [];
+            vm.currentPage = page;
+            index = (page - 1) * vm.Itemsperpage;
+            console.log('the index is', index);
+            var trackIndex = 0;
+            for (var i = index; i <= vm.totalbuyer; i++) {
+                vm.pagedPost.push(vm.buyerdata[i]);
+                trackIndex++;
+                if (trackIndex == vm.Itemsperpage) {
+                    break;
+                }
+
+            }
+
         }
 
+        vm.reset = reset;
+        function reset(pa)
+        {
+            console.log("pa",pa);
+            vm.BuyerId = "";
+            vm.websiteid = "";
+            vm.productid = "";
+            vm.sourceid = "";
+            vm.generatedDate = "";
+            vm.BuyerCompany = "";
+            search();
 
-
-        //function pageChange(page) 
-        //{
-        //    console.log('the page pased is', page);
-        //    vm.pagedPost = [];
-        //    vm.currentPage = page;
-        //    index = (page - 1) * vm.Itemsperpage;
-        //    console.log('the index is', index);
-        //    var trackIndex = 0;
-        //    for (var i = index; i <= vm.totalbuyer; i++) {
-        //        vm.pagedPost.push(vm.buyerdata[i]);
-        //        trackIndex++;
-        //        if (trackIndex == vm.Itemsperpage) {
-        //            break;
-        //        }
-
-        //    }
-
-        //}
-
+        }
 
 
     }

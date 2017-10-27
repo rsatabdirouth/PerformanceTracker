@@ -48,10 +48,21 @@
      mainService.GetStatuses().then(function (res) { vm.status = res.data; console.log("status", vm.status); }),
      mainService.GetLevels().then(function (res) { vm.level = res.data;console.log("level",vm.level)})
      mainService.GetMediums().then(function (res) { vm.medium = res.data; console.log("medium", vm.medium); })
-     mainService.GetBuyers().then(function (res) { vm.buyer = res.data; console.log("vm.buyer", vm.buyer); })
+            mainService.GetBuyers().then(function (res) { vm.buyer = res.data; console.log("vm.buyer", vm.buyer); })
+            //test();
             search();
 
-         }
+        }
+
+        //test
+        //function test()
+        //{
+        //    mainService.GetBuyers().then(function (res) { vm.buyer = res.data; console.log("vm.buyer", vm.buyer); });
+
+        //}
+
+
+
 
         //function for pagination and sorting
         function limitChange(limit) {
@@ -107,31 +118,79 @@
         vm.InterestedID;
         vm.InterestedIdchange = InterestedIdchange;
         function InterestedIdchange(InterestedID) {
+            console.log("InterestedIdchange", InterestedID);
             vm.query['$filter'] = 'Isintersted eq ' + InterestedID;
             search();
 
         }
-        //NextFollowupdate
 
-        vm.NextFollowupdate;
-        vm.followupdatechange = followupdatechange;
-        function followupdatechange(NextFollowupdate) {
-            vm.query['$filter'] = 'NextFollowUpDate eq ' + NextFollowupdate;
+        //converted
+        vm.IsconvertedId;
+        vm.conversionidchange = conversionidchange;
+        function conversionidchange(IsconvertedId) {
+            console.log("IsConverted", IsconvertedId);
+            vm.query['$filter'] = 'IsConverted eq ' + IsconvertedId;
             search();
 
         }
 
+        //FirstDateOfInteraction
+        vm.FirstDateOfInteraction;
+        vm.FirstDateOfInteractionChange = FirstDateOfInteractionChange;
+        function FirstDateOfInteractionChange(FirstDateOfInteraction)
+        {
+            vm.query['$filter'] = "FirstDateOfInteraction eq DateTime'" + FirstDateOfInteraction + "'";
+            search();
+        }
+
+
+        //NextFollowupdate 
+        
+        vm.nextfollowupdate;
+        vm.followupdatechange = followupdatechange;
+        function followupdatechange(nextfollowupdate) {
+            console.log("nextfollowupdate", nextfollowupdate);
+            //console.log("FirstDateOfInteraction", FirstDateOfInteraction)
+            alert("nextfollowupdate");
+          //  vm.query['$filter'] = "NextFollowUpDate+lt+datetime'" + nextfollowupdate + "'";
+            vm.query['$filter'] = "NextFollowUpDate eq DateTime'" + nextfollowupdate + "'";
+          // 
+            
+            search();
+
+        }
+        //namechange
+
+        vm.BuyerName = "";
+        vm.namechange = namechange;
+        function namechange(BuyerName)
+        {
+            console.log("BuyerName", BuyerName);
+          //  vm.query['$filter'] = "indexof(BuyerName,'" + BuyerName + "') ne -1";
+            vm.query['$filter'] = "indexof(BuyerCompany, '" + BuyerName + "') ne -1";
+            test();
+        }
 
 
 
+        //reset
+        vm.reset = reset;
+        function reset()
+        {
+           // alert("reset");
+            vm.mediumid = "";
+            vm.BuyerName = "";
+            vm.NextFollowupdate = "";
+            vm.IsconvertedId = "";
+            vm.InterestedID = "";
+            vm.CommunicationID = "";
+            vm.BuyerID = "";
+            vm.followupid = "";
 
 
+        }
 
-
-
-
-
-        function search() {
+    function search() {
             mainService.GetCommunications(vm.query).then(function (res) {
                 vm.communications = res.data;
                 console.log("vm.communications", vm.communications);

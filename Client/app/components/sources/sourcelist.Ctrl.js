@@ -19,8 +19,42 @@
         vm.sourceId;
         vm.GetSourceById = GetSourceById;
         vm.SaveSources = SaveSources;
-     
 
+        //odata
+        vm.limit = 3;
+        vm.limitChange = limitChange;
+        vm.query = {
+            '$top': vm.limit
+        };
+        //limit
+        function limitChange(limit) {
+            vm.query['$top'] = limit;
+            search();
+
+        }
+        //reset
+        vm.reset = reset;
+        function reset() { return vm.sourceName = ""; }
+        //search
+        vm.sourceName = "";
+        vm.sourcenameChange = sourcenameChange;
+        function sourcenameChange(sourceName) {
+            console.log("sourceName", sourceName);
+            vm.query['$filter'] = "indexof(Source, '" + sourceName + "') ne -1";
+            search();
+        }
+        //order
+        vm.orderBy = orderBy;
+
+        function orderBy(order, desc) {
+            desc = !desc;
+            console.log(desc);
+            if (desc) {
+                order = order + " desc";
+            }
+            vm.query['$orderby'] = order;
+           search();
+        }
 
 
         active();
@@ -31,9 +65,12 @@
             if (vm.sourceId > 0) {
               vm.GetSourceById(vm.sourceId);
             }
-            mainService.GetSources().then(function (res) { vm.sources = res.data; console.log("vm.sources", vm.sources); })
+            search();
 
         }
+        //search
+        function search()
+        { mainService.GetSources(vm.query).then(function (res) { vm.sources = res.data; console.log("vm.sources", vm.sources); }) }
 
         function GetSourceById() {
             mainService.GetSourceById(vm.sourceId).then(function (res) {

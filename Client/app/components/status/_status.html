@@ -1,11 +1,21 @@
 ﻿{{status.title}}
 <div class="Container">
+   
     <div class="col-md-6 col-lg-6">
+        <select ng-change="status.limitChange(status.limit)" ng-model="status.limit">
+            <option ng-value="3">3</option>
+            <option ng-value="5">5</option>
+            <option ng-value="10">10</option>
+            <option ng-value="20">20</option>
+            <option ng-value="30">30</option>
+            <option ng-value="40">40</option>
+            <option ng-value="50">50</option>
+        </select>
         <table>
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th ng-click="status.columnname">Communicationstatus</th>
+                    <th >Communicationstatus</th>
                 </tr>
             </thead>
             <tbody ng-repeat="status in status.statuses">
@@ -19,6 +29,7 @@
                 </tr>
             </tbody>
         </table>
+        
     </div>
     <div class="col-md-6 col-lg-6">
         <div ng-cloak>
@@ -39,8 +50,10 @@
                     <input type="submit" class="guide" value="Save" ng-click="status.SaveStatuses()()"
                            ng-disabled="Statusform.$invalid">
 
-                    <button class="guide" ng-click="status.status= {}"> Reset</button>
-                    <a href="/">Home</a>
+                    <button class="guide" ng-click="status.status= {} && Statusform.$setPristine()">
+                     Reset</button>
+                    
+                   
                 </div>
 
 
@@ -50,5 +63,12 @@
         </ng-form>
        
     </div>
+
+    <ng-form name="searchstatus">
+        Search
+        <input id="statusname" name="statusname" ng-model="status.statusname"
+               ng-change="status.statusChange(status.statusname)">
+        <button ng-click="status.reset() && searchstatus.$setPristine()">Reset</button>
+    </ng-form>
 
 </div>

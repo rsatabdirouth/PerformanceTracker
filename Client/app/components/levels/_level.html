@@ -2,11 +2,16 @@
 <div class="Container">
     
     <div class="col-md-6">
+        <select ng-model="level.limit" ng-change="level.limitChange()">
+            <option ng-value="2">2</option>
+            <option ng-value="5">5</option>
+            <option ng-value="10">10</option>
+        </select>
         <table>
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>
+                    <th ng-click="desc = !desc; level.orderBy('ID', desc)">ID</th>
+                    <th ng-click="desc = !desc; level.orderBy('FollowupBy', desc)">
                         Level
                        
                     </th>
@@ -39,13 +44,21 @@
 
             <div class="button-div">
                 <button ng-click="level.SaveLevels()" class="guide" ng-disabled="FollowupByform.$invalid">Save</button>
-                <button ng-click="level.level={}" class="guide">Refresh</button>
+                <button ng-click="level.level={} && FollowupByform.$setPristine()" class="guide">Refresh</button>
+            
+                <!--<button ng-click="level.reset()" class="guide" >Reset</button-->
+                <p>Pristine: {{FollowupByform.$pristine}}</p>
             </div>
        
 
         </ng-form>
         
     </div>
+    <ng-form name="searchlevelname">
+        <input id="levelname" name="levelname" ng-model="level.levelname" ng-change="level.levelnamechange(level.levelname)"/>
+        <button ng-click="level.reset() && searchlevelname.$setPristine()">Reset</button>
+
+    </ng-form>
 
 </div>
 

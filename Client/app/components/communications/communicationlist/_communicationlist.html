@@ -16,7 +16,7 @@
         <thead>
             <tr>
                 <th>BuyerName</th>
-                <th ng-click="desc = !desc; communicationlist.orderBy('BuyerID', desc)">BuyerID</th>
+                <!--<th ng-click="desc = !desc; communicationlist.orderBy('BuyerID', desc)">BuyerID</th>-->
                 <th ng-click="desc = !desc; communicationlist.orderBy('CommunicationID', desc)">CommunicationID</th>
                 <th ng-click="desc = !desc; communicationlist.orderBy('FirstDateOfInteraction', desc)">FirstDateOfInteraction</th>
                 <th ng-click="desc = !desc; communicationlist.orderBy('communicatedBy', desc)">CommunicatedBy</th>
@@ -24,7 +24,7 @@
                 <th>Isinterested</th>
                 <th>NextStep</th>
                 <th>LevelTransferredTo</th>
-                <th ng-click="desc = !desc; communicationlist.orderBy('NextFollowUpDate', desc)">NextFollowUpDate</th>
+                <th ng-click="desc = !desc; communicationlist.orderBy('NextFollowUpDate',desc)">NextFollowUpDate</th>
                 <th>IsConverted</th>
                 <th>CommunicationMedium</th>
 
@@ -35,7 +35,7 @@
         <tbody ng-repeat="communicate in communicationlist.communications">
             <tr>
                 <td>{{communicate.buyer.BuyerCompany}}</td>
-                <td>{{communicate.BuyerID}}</td>
+                <!--<td>{{communicate.BuyerID}}</td>-->
                 <td><a href="/#!/followupdetails/{{communicate.CommunicationID}}">{{communicate.CommunicationID}}</a></td>
 
                 <td>{{communicate.FirstDateOfInteraction}}</td>
@@ -66,7 +66,7 @@
             <h4>Level</h4>
             <select id="followupid" name="followupid" ng-model="communicationlist.followupid" ng-change="communicationlist.followupidchange(communicationlist.followupid)">
 
-                <option value="0" label="Please Select"></option>
+                <option value="">Please Select</option>
                 <option ng-repeat="followup in communicationlist.level"
                         value="{{followup.ID}}" ng-selected="{{followup.Selected==true}}">
                     {{followup.FollowupBy}}
@@ -76,65 +76,104 @@
 
         </div>
 
-        <div class="col-md-3">
-            <h4>NextFollowupdate</h4>
-            <input type="date" id="nextfollowupdate" ng-model="communicationlist.NextFollowupdate" ng-change="communicationlist.followupdatechange(communicationlist.NextFollowupdate)" />
-        </div>
-
         <!--<div class="col-md-3">
-            <h4>Converted</h4>
-            <select id="convertedId" name="IsconvertedId" ng-model="communicationlist.IsconvertedId" ng-change="communicationlist.conversionidchange(communicationlist.IsconvertedId)">
-
-               
-                <option ng-value="0">False</option>
-                <option ng-value="1">True</option>
-            </select>
-
-
-
+            <h4>NextFollowupdate</h4>
+            <input  id="nextfollowupdate" ng-model="communicationlist.NextFollowupdate" ng-change="communicationlist.followupdatechange(communicationlist.NextFollowupdate)" />
         </div>-->
         <div class="col-md-3">
-            <h4>Buyer ID</h4>
-            <input type="text" id="BuyerID" ng-model="communicationlist.BuyerID" ng-change="communicationlist.buyeridchange(communicationlist.BuyerID)" />
+            <h4>FirstCommunicationDay</h4>
+            <ng-datepicker id="FirstDateOfInteraction" name="FirstDateOfInteraction" 
+           ng-model="communicationlist.FirstDateOfInteraction" locale="sl" format="YYYY-MM-DDTHH:mm:ss" view-format="Do MMMM YYYY" 
+           ng-change="communicationlist.FirstDateOfInteractionChange(communicationlist.FirstDateOfInteraction)">
+            </ng-datepicker>
         </div>
-        <div class="clearafix"></div>
-
         <div class="col-md-3">
+            <h4>NextFollowupdate</h4>
+            <ng-datepicker id="nextfollowupdate" name="nextfollowupdate" ng-model="communicationlist.nextfollowupdate" locale="sl" format="YYYY-MM-DDTHH:mm:ss" view-format="Do MMMM YYYY" ng-change="communicationlist.followupdatechange(communicationlist.nextfollowupdate)">
+            </ng-datepicker>
+        </div>
+
+            <div class="col-md-3">
+                <h4>Converted</h4>
+                <select id="IsconvertedId" name="IsconvertedId" ng-model="communicationlist.IsconvertedId" ng-change="communicationlist.conversionidchange(communicationlist.IsconvertedId)">
+
+                    <option value="">select</option>
+                    <option value="false">False</option>
+                    <option value="true">True</option>
+                </select>
+
+
+
+            </div>
+            <div class="col-md-3">
+                <h4>Buyer ID</h4>
+                <input type="text" id="BuyerID" ng-model="communicationlist.BuyerID" ng-change="communicationlist.buyeridchange(communicationlist.BuyerID)" />
+            </div>
+            <div class="clearafix"></div>
+
+            <!--<div class="col-md-3">
             <h4>Buyer Name</h4>
-            <input type="text" id="BuyerName" />
-        </div>
+            <input type="text" id="BuyerName" ng-model="communicationlist.BuyerName" ng-change="communicationlist.namechange(communicationlist.BuyerName)" />
 
-        <div class="col-md-3">
-            <h4>Interested</h4>
-            <select ng-model="communicationlist.InterestedID" ng-change="communicationlist.InterestedIdchange(communicationlist.InterestedID)">
-                <option ng-value="">select</option>
-                <option ng-value="0">False</option>
-                <option ng-value="1">True</option>
-            </select>
-        </div>
+        </div>-->
+            <div class="col-md-3">
+                <h4>BuyerName</h4>
+                <select id="buyername" name="buyername" ng-model="communicationlist.BuyerID" ng-change="communicationlist.buyeridchange(communicationlist.BuyerID)">
 
-        <div class="col-md-3">
-            <h4>Communication Id </h4>
-            <input type="text" id="CommunicationId" name="CommunicationId" ng-model="communicationlist.CommunicationID" ng-change="communicationlist.communicationidchange(communicationlist.CommunicationID)" />
-        </div>
+                    <option value="">Please Select</option>
+                    <option ng-repeat="buyer in communicationlist.buyer"
+                            value="{{buyer.BuyerId}}" ng-selected="{{followup.Selected==true}}">
+                        {{buyer.BuyerCompany}}
+                    </option>
+                </select>
 
-        <div class="col-md-3">
-            <h4>Search Medium</h4>
-            <select id="mediumid" ng-change="communicationlist.mediumidchange(communicationlist.mediumid)" ng-model="communicationlist.mediumid">
-                <option value="0" label="Please select"></option>
 
-                <option ng-repeat="medium in communicationlist.medium" value="{{medium.ID}}"
-                        ng-selected="{{ medium.Selected == true }}">
-                    {{medium.Medium}}
-                </option>
-            </select>
-        </div>
-        <div class="clearafix"></div>
+            </div>
+
+            <div class="col-md-3">
+                <h4>Interested</h4>
+                <select ng-model="communicationlist.InterestedID" ng-change="communicationlist.InterestedIdchange(communicationlist.InterestedID)">
+                    <option value="">select</option>
+                    <option value="false">False</option>
+                    <option value="true">True</option>
+                </select>
+            </div>
+
+            <div class="col-md-3">
+                <h4>Communication Id </h4>
+                <input type="text" id="CommunicationId" name="CommunicationId" ng-model="communicationlist.CommunicationID" ng-change="communicationlist.communicationidchange(communicationlist.CommunicationID)" />
+            </div>
+
+            <div class="col-md-3">
+                <h4>Search Medium</h4>
+                <select id="mediumid" ng-change="communicationlist.mediumidchange(communicationlist.mediumid)" ng-model="communicationlist.mediumid">
+
+                    <option value="">Please select</option>
+
+                    <option ng-repeat="medium in communicationlist.medium" value="{{medium.ID}}"
+                            ng-selected="{{ medium.Selected == true }}">
+                        {{medium.Medium}}
+                    </option>
+                </select>
+            </div>
+            <div class="clearafix"></div>
+            <div class="button-div">
+
+
+                <button class="guide" ng-click="communicationlist.reset() && SortCommunication.$setPristine()"> Reset</button>
+
+                <!--<button ng-click="communicationlist.search()" class="guide">Refresh</button>-->
+                <a href="/">Home</a>
+            </div>
         </div>
    
 
-    <div>
-      
-        <button type="reset" ng-click="communicationlist.form={}">Reset</button>
-    </div>
+   
 </ng-form>
+
+<!--<script>
+  $( function() {
+      $("#nextfollowupdate").datepicker();
+
+  } );
+</script>-->

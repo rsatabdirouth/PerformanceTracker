@@ -49,25 +49,24 @@
                 vm.communications = res.data;
                 console.log("vm.communications", vm.communications);
 
-                vm.status = res.data.Status;
-                console.log("vm.Status", vm.status);
+                //vm.status = res.data.Status;
+                //console.log("vm.Status", vm.status);
 
 
-                vm.TransferredTo = res.data.TransferredTo;
-                console.log("followup", vm.TransferredTo);
+                //vm.TransferredTo = res.data.TransferredTo;
+                //console.log("followup", vm.TransferredTo);
 
-                vm.CommunicationMedium = res.data.CommunicationMedium;
-                console.log("vm.CommunicationMedium", vm.CommunicationMedium);
+                //vm.CommunicationMedium = res.data.CommunicationMedium;
+                //console.log("vm.CommunicationMedium", vm.CommunicationMedium);
 
-                vm.buyer = res.data.BuyerInfo;
-                console.log("vm.buyer", vm.buyer);
+                //vm.buyer = res.data.BuyerInfo;
+                //console.log("vm.buyer", vm.buyer);
+              });
 
-
-
-
-
-
-            });
+            mainService.GetStatuses().then(function (res) { vm.status = res.data; console.log("status", vm.status); }),
+          mainService.GetLevels().then(function (res) { vm.level = res.data; console.log("level", vm.level) })
+            mainService.GetMediums().then(function (res) { vm.medium = res.data; console.log("medium", vm.medium); })
+            mainService.GetBuyers().then(function (res) { vm.buyer = res.data; console.log("vm.buyer", vm.buyer); })
         }
 
 

@@ -3,9 +3,12 @@
 
     angular.module('PerformanceTrackerApp', [
         // Angular modules 
-        'ngRoute'
+        'ngRoute',
 
         // Custom modules 
+       // 'angularjs-datetime-picker'
+       'jkuri.datepicker'
+      // 'ngDatepicker'
 
         // 3rd Party Modules
 

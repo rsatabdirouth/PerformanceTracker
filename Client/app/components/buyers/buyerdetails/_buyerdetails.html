@@ -16,7 +16,7 @@
         <div class="col-md-4">
             <label>ProductlookingFor</label>
             <select id="ProductLookingFor" name="ProductLookingFor" title="Enter ProductLookingFor" ng-model="buyerdetails.buyer.ProductLookingFor" ng-required="true" class="inputform2">
-                <option ng-value="" label="Please select"></option>
+                <option value="">Please select</option>
 
                 <option ng-repeat="product in buyerdetails.products" ng-value="product.ID"
                         ng-selected="{{ product.Selected == true }}">
@@ -29,7 +29,7 @@
         <div class="col-md-4">
             <label>Designation</label>
             <select id="ContactPersonDesignation" name="ContactPersonDesignation" ng-model="buyerdetails.buyer.ContactPersonDesignation" ng-required="true" class="inputform2" title="Enter Designation">
-                <option ng-value="" label="Please select"></option>
+                <option value="">Please select</option>
 
                 <option ng-repeat="designation in buyerdetails.designation" ng-value="designation.ID"
                         ng-selected="{{ designation.Selected == true }}">
@@ -96,8 +96,8 @@ placeholder="Enter AlternativeNumber" id="AlternativeNumber" name="AlternativeNu
         
         <div class="col-md-4">
              <label>BuyerSource</label>
-    <select id="BuyerSource" name="BuyerSource" class="inputform2" ng-model="buyerdetails.buyer.BuyerSource" ng-required="true" title="Enter BuyerSource">
-        <option ng-value="" label="Please select"></option>
+             <select id="BuyerSource" name="BuyerSource" class="inputform2" ng-model="buyerdetails.buyer.BuyerSource" ng-required="true" title="Enter BuyerSource">
+        <option value="">Please select</option>
 
         <option ng-repeat="source in buyerdetails.sources" ng-value="source.ID"
                 ng-selected="{{ source.Selected == true }}">
@@ -111,9 +111,8 @@ placeholder="Enter AlternativeNumber" id="AlternativeNumber" name="AlternativeNu
 
             <label>BuyerPriority</label>
             <select id="BuyerPriority" ng-model="buyerdetails.buyer.BuyerPriority" ng-required="true" class="inputform2" name="BuyerPriority" title="Enter BuyerPriority">
-                <option ng-value="" label="Please select"></option>
-
-                <option ng-repeat="priority in buyerdetails.Priority" ng-value="priority.ID"
+                 <option value="" >Please select</option>
+                 <option ng-repeat="priority in buyerdetails.Priority" ng-value="priority.ID"
                         ng-selected="{{ priority.Selected == true }}">
                     {{priority.Level}}
                 </option>
@@ -124,16 +123,21 @@ placeholder="Enter AlternativeNumber" id="AlternativeNumber" name="AlternativeNu
         <div class="col-md-4">
 
             <label>IsBuyerInterested</label>
-            <input type="text" ng-model="buyerdetails.buyer.IsBuyerInterested" ng-required="true" id="IsBuyerInterested" name="IsBuyerInterested" placeholder="Enter IsBuyerInterested true/false" class="inputform2"/>
-         
+            <!--<input type="text" ng-model="buyerdetails.buyer.IsBuyerInterested" ng-required="true" id="IsBuyerInterested" name="IsBuyerInterested" placeholder="Enter IsBuyerInterested true/false" class="inputform2"/>-->
+            <select class="inputform2" name="IsBuyerInterested" ng-model="buyerdetails.buyer.IsBuyerInterested" id="IsBuyerInterested" ng-required="true">
+                <option value="">select</option>
+                <option value="false">false</option>
+                <option value="true">true</option>
+
+            </select>
+
 
         </div>
 
         <div class="col-md-4">
             <label>BuyerWebsite</label>
             <select id="BuyerWebsiteName" name="BuyerWebsiteName" class="inputform2" ng-model="buyerdetails.buyer.BuyerWebsiteName" ng-required="true" title="Enter BuyerWebsiteName">
-                <option ng-value="" label="Please select"></option>
-
+                <option value="">Please select</option>
                 <option ng-repeat="website in buyerdetails.website" ng-value="website.ID"
                         ng-selected="{{ website.Selected == true }}">
                     {{website.WebsiteName}}
@@ -152,7 +156,7 @@ placeholder="Enter AlternativeNumber" id="AlternativeNumber" name="AlternativeNu
             <input type="submit" class="guide" value="Save" ng-click="buyerdetails.SaveBuyers()"
                    ng-disabled="buyeradd.$invalid">
 
-            <button class="guide" ng-click="buyerdetails.buyer= {}"> Reset</button>
+            <button class="guide" ng-click="buyerdetails.buyer= {} && buyeradd.$setPristine()"> Reset</button>
             <a href="/">Home</a>
         </div>
     </div>

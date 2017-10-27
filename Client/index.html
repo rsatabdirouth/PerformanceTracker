@@ -1,4 +1,8 @@
+﻿
 ﻿<!DOCTYPE html>
+
+
+
 <html ng-app="PerformanceTrackerApp" ng-controller="mainCtrl">
 <head>
     <link rel="shortcut icon" href="">
@@ -6,6 +10,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link href="./assets/css/Style.css" rel="stylesheet" />
+    <!--angular date time picker-->
+
+    <link href="assets/css/angular-datepicker.css" rel="stylesheet" />
+    
+   
     <style>
         [ng\:cloak],
         [ng-cloak],
@@ -76,18 +85,15 @@ li a:hover:not(.active) {
         <li><a href="/">BuyerList</a></li>
         <li><a href="/#!/communicationlist">CommunicationList</a></li>
         <li><a href="/#!/buyerdetails">Buyer</a></li>
-      
         <li><a href="/#!/sources">Source</a></li>
         <li><a href="/#!/mediums">Meduim</a></li>
-      
         <li><a href="/#!/products">Product</a></li>
+       
+
+    
         <li><a href="/#!/status">Status</a></li>
         <li><a href="/#!/designations">Designations</a></li>
-       
-        <!--  --------                -->
-         <li><a href="/#!/followupdetails">FollowUp</a></li>
-        <!--  --------                -->
-
+        <li><a href="/#!/followupdetails">FollowUp</a></li>
         <li><a href="/#!/websites">Website</a></li>
         <li style="float:right"><a class="active" href="/#!/levels">Level</a></li>
     </ul>
@@ -97,56 +103,76 @@ li a:hover:not(.active) {
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular-route.js"></script>
+    <!--moment.js-->
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/locale/af.js"></script>-->
+
     <!--jquery-->
-    
+    <!--angular date time picker-->
+
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment-with-locales.min.js"></script>
+    <script src="assets/js/ngDatepicker.js"></script>
+
+
     <script src="app/app.module.js"></script>
     <script src="app/app.config.js"></script>
     <script src="app/app.ctrl.js"></script>
     <script src="app/app.mainService.js"></script>
     
-   
-
-    
-    
-    
-    
-    <!--ProductControllers-->
-
-    <script src="app/components/products/products.Ctrl.js"></script>
-   
-
-    <!--souceControllers-->
-    <script src="app/components/sources/sourcelist.Ctrl.js"></script>
-    <!--buyerController-->
+    <!--buyerCtrl-->
     <script src="app/components/buyers/list/list.Ctrl.js"></script>
     <script src="app/components/buyers/buyerdetails/buyerdetails.Ctrl.js"></script>
-    <!--levelControllers-->
- 
-    <script src="./app/components/levels/level.Ctrl.js"></script>
-    <!--CommunicationsControllers-->
-    <!--<script src="app/components/communications/list/communicationlist.Ctrl.js"></script>-->
-
-    <script src="app/components/communications/followupdetails/followup.Ctrl.js"></script>
-
-    <!--mediumsControllers-->
-
-    <script src="app/components/mediums/medium.Ctrl.js"></script>
-    <!--WebsiteControllers-->
-
-    <script src="app/components/websites/websitelist.Ctrl.js"></script>
-   
-    <!--StatusControllers-->
-
-    <script src="./app/components/status/status.Ctrl.js"></script>
-
-    <!--Designations-->
-    <script src="app/components/designations/designation.Ctrl.js"></script>
-
-    <!----newtest-->
-
-
+    <!--Communicationctrl-->
     <script src="app/components/communications/communicationlist/commuicationlist.Ctrl.js"></script>
+    <script src="app/components/communications/followupdetails/followup.Ctrl.js"></script>
+    <!--designation-->
+    <script src="app/components/designations/designation.Ctrl.js"></script>
+    <!--levels-->
+    <script src="app/components/levels/level.Ctrl.js"></script>
+    <!--mediums-->
+    <script src="app/components/mediums/medium.Ctrl.js"></script>
+    <!--products-->
+    <script src="app/components/products/products.Ctrl.js"></script>
+    <!--sources-->
+    <script src="app/components/sources/sourcelist.Ctrl.js"></script>
+    <!--status-->
+    <script src="app/components/status/Status.Ctrl.js"></script>
+    <!--websites-->
+    <script src="app/components/websites/websitelist.Ctrl.js"></script>
+
+   <!--moment.js-->
+    <script src="assets/js/moment-with-locales.js"></script>
+    <script src="assets/js/moment.js"></script>
+
+   <!--datepicker-->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  
     
+    
+   
+    
+    
+     <!--<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.23/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css">
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    @*
+    <script src="~/Scripts/bootstrap.min.js"></script>*@
+    <script src="~/Scripts/jquery-ui-1.10.4.js"></script>
+
+    @*
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.3.js"></script>*@
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></-->
+
+
+<!--test-->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+   
+
+
+  
+
 
 </body>
 </html>

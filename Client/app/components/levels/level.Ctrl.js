@@ -19,8 +19,42 @@
         vm.levelId;
         vm.GetLevelById = GetLevelById;
         vm.SaveLevels = SaveLevels;
+   
+        vm.FollowupByform;
+        vm.reset = reset;
+        //pagination
+        vm.limit = 2;
+        vm.query = { '$top': vm.limit };
+        vm.limitChange = limitChange;
+        //limitchange
+        function limitChange(limit) {
+            vm.query['$top'] = limit;
+            search();
+        }
+        //levelsearch       
+        vm.levelname = "";
+        vm.levelnamechange = levelnamechange;
+        function levelnamechange(levelname) {
+            console.log("FollowupBy", levelname);
+            vm.query['$filter'] = "indexof(FollowupBy, '" + levelname + "') ne -1";
+            search();
+        }
 
+        //orderby
+        vm.orderBy = orderBy;
 
+        function orderBy(order, desc) {
+            desc = !desc;
+            console.log(desc);
+            if (desc) {
+                order = order + " desc";
+            }
+            vm.query['$orderby'] = order;
+            search();
+        }
+        //reset
+        vm.reset = reset;
+        function reset() { vm.levelname = ""; search(); }
 
 
 
@@ -35,7 +69,12 @@
             if (vm.levelId > 0) {
                 vm.GetLevelById(vm.levelId);
             }
-            mainService.GetLevels().then(function (res) {
+            search();
+        }
+        //search
+        function search()
+        {
+            mainService.GetLevels(vm.query).then(function (res) {
                 vm.levels = res.data;
                 console.log("vm.levels", vm.levels);
             });
@@ -58,6 +97,17 @@
                 activate();
             }, function () { });
         }
+
+        function reset()
+        {
+           
+            vm.level = {};
+          
+            
+
+        }
+
+      
     }
 })();
 

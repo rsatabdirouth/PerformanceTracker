@@ -1,11 +1,19 @@
 ﻿{{sourcelist.title}}
 <div class="Container">
     <div class="col-md-6">
+        <select ng-change="sourcelist.limitChange(sourcelist.limit)" ng-model="sourcelist.limit">
+            <option ng-value="3">3</option>
+            <option ng-value="5">5</option>
+            <option ng-value="20">20</option>
+            <option ng-value="30">30</option>
+            <option ng-value="40">40</option>
+            <option ng-value="50">50</option>
+        </select>
         <table>
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Source</th>
+                    <th ng-click="desc = !desc; sourcelist.orderBy('ID', desc)">ID</th>
+                    <th ng-click="desc = !desc; sourcelist.orderBy('Source', desc)">Source</th>
                 </tr>
             </thead>
             <tbody ng-repeat="source in sourcelist.sources ">
@@ -39,7 +47,7 @@
 
 <div class="button-div">
     <button ng-click="sourcelist.SaveSources()" ng-disabled="SourceForm.$invalid" class="guide">Save</button>
-    <button ng-click="sourcelist.source={}" class="guide">Reset</button>
+    <button ng-click="sourcelist.source={} && SourceForm.$setPristine()" class="guide">Reset</button>
     <button><a href="/"> Back</a></button>
 </div>
       
@@ -49,6 +57,12 @@
        
 
         </div>
+    <ng-form name="searchSource">
+        Search
+        <input id="sourceName" name="sourceName" ng-model="sourcelist.sourceName"
+               ng-change="sourcelist.sourcenameChange(sourcelist.sourceName)">
+        <button ng-click="sourcelist.reset() && searchSource.$setPristine()">Reset</button>
+    </ng-form>
        
     </div>
 

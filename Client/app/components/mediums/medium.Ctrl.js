@@ -20,6 +20,44 @@
         vm.GetMediumsById = GetMediumsById;
         vm.SaveMediums = SaveMediums;
 
+        //pagination
+        vm.limit = 2;
+        vm.query = { '$top': vm.limit };
+        vm.limitChange = limitChange;
+       //limitchange
+        function limitChange(limit) {
+            vm.query['$top'] = limit;
+            search();
+        }
+
+
+        //orderby
+        vm.orderBy = orderBy;
+
+        function orderBy(order, desc) {
+            desc = !desc;
+            console.log(desc);
+            if (desc) {
+                order = order + " desc";
+            }
+            vm.query['$orderby'] = order;
+            search();
+        }
+        //reset
+        vm.reset = reset;
+        function reset() { vm.mediumname = ""; search(); }
+
+        //search
+        vm.mediumname = "";
+        vm.mediumchange = mediumchange;
+        function mediumchange(mediumname)
+        {
+            vm.query['$filter'] = "indexof(Medium ,'" + mediumname + "') ne -1";
+            // vm.query['$filter'] = "indexof(ProductName, '" + ProductName + "') ne -1";
+            search();
+        }
+       
+        
         activate();
 
         function activate() {
@@ -29,11 +67,12 @@
             {
                vm.GetMediumsById(vm.mediumId);
             }
-            mainService.GetMediums().then(function (res) { vm.mediums = res.data; console.log("vm.medium", vm.mediums) });
+            search();
         }
 
-      
-
+        //search
+        function search()
+        { mainService.GetMediums(vm.query).then(function (res) { vm.mediums = res.data; console.log("vm.medium", vm.mediums) }); }
 
 
         function GetMediumsById() {

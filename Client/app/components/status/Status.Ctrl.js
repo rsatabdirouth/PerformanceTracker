@@ -21,6 +21,30 @@
         vm.SaveStatuses = SaveStatuses;
         vm.columnname;
 
+        //pagination
+        vm.limit = 3;
+        vm.limitChange = limitChange;
+        vm.query = {
+            '$top': vm.limit
+        };
+        function limitChange(limit)
+        {
+           vm.query['$top'] = limit;
+            search();
+
+        }
+        //reset
+        vm.reset = reset;
+        function reset() { return vm.statusname = "";}
+        //search
+        vm.statusname = "";
+        vm.statusChange = statusChange;
+        function statusChange(statusname) {
+            console.log("statusname", statusname);
+            vm.query['$filter'] = "indexof(Status, '" + statusname + "') ne -1";
+            search();
+        }
+
     
 
         function activate()
@@ -34,13 +58,17 @@
                 vm.GetStatusById(vm.statusId);
             }
             
-            mainService.GetStatuses().then(function (res)
-            {
+            search();
+        }
+        activate();
+
+        function search()
+        {
+            mainService.GetStatuses(vm.query).then(function (res) {
                 vm.statuses = res.data;
                 console.log(" vm.statuses", vm.statuses);
             })
         }
-        activate();
 
         function GetStatusById() {
             mainService.GetStatusById(vm.statusId).then(function(res){

@@ -2,8 +2,8 @@
 <div class="Container">
 <div class="col-md-6 col-lg-6 col-sm-12">
     <select ng-change="product.limitChange(product.limit)" ng-model="product.limit">
+        <option ng-value="2">2</option>
         <option ng-value="5">5</option>
-        <option ng-value="10">10</option>
         <option ng-value="20">20</option>
         <option ng-value="30">30</option>
         <option ng-value="40">40</option>
@@ -14,6 +14,7 @@
         <thead>
 
             <tr>
+                  
                 <th ng-click="desc = !desc; product.orderBy('ID', desc)">ProductId</th>
                 <th ng-click="desc = !desc; product.orderBy('ProductName', desc)">ProductName</th>
             </tr>
@@ -25,6 +26,7 @@
             </tr>
         </tbody>
     </table>
+    <button><a href="/">Back</a></button>
 </div>
 <div class="col-md-6 col-lg-6 col-sm-12">
 
@@ -41,7 +43,7 @@
         <div class="button-div">
 
             <button ng-click="product.SaveProducts()" ng-disabled="ProductNameform.$invalid" class="guide"> Save</button>
-            <button ng-click="product.product= {}" class="guide"> Reset</button>
+            <button ng-click="product.product= {} && ProductNameform.$setPristine()" class="guide"> Reset</button>
           
             <a href="/">Home</a>
 
@@ -50,8 +52,13 @@
 
     </ng-form>
 </div>
-    Search
-    <input id="Id" name="Id" ng-model="product.Id" ng-change="product.productidchange(product.Id)">
+    <ng-form name="searchProductName">
+        Search
+        <input id="ProductName" name="ProductName" ng-model="product.ProductName"
+               ng-change="product.productnamechange(product.ProductName)">
+        <button ng-click="product.reset() && searchProductName.$setPristine()">Reset</button>
+    </ng-form>
+   
 </div>
 
 

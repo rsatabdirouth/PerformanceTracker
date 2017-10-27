@@ -26,14 +26,34 @@
         vm.SaveProducts = SaveProducts;
 
         //pagination sorting and filter
-        vm.limit = 5;
-        vm.limitChange = limitChange;
-        vm.productidchange = productidchange;
-       
-        vm.Id;
+        vm.limit = 2;
         vm.query = {
             '$top': vm.limit
         };
+        vm.limitChange = limitChange;
+
+        //orderby
+        vm.orderBy = orderBy;
+
+        function orderBy(order, desc) {
+            desc = !desc;
+            console.log(desc);
+            if (desc) {
+                order = order + " desc";
+            }
+            vm.query['$orderby'] = order;
+            Search();
+        }
+
+    
+        //ProductName       
+        vm.ProductName = "";
+        vm.productnamechange = productnamechange;
+        function productnamechange(ProductName) {
+            console.log("ProductName", ProductName);
+            vm.query['$filter'] = "indexof(ProductName, '" + ProductName + "') ne -1";
+            Search();
+        }
 
       
        
@@ -86,19 +106,20 @@
        
 
      
-        function productidchange(id)
-        {
-            vm.query['$filter'] = id;
-            Search();
-        }
+        
         
         function Search()
         {
-            mainService.GetProducts().then(
+            mainService.GetProducts(vm.query).then(
                 function (response) { vm.products = response.data; console.log("vm.product", vm.products); },
                 function (error) { console.log(error);  })
             
-            }
+        }
+        vm.reset = reset;
+        function reset()
+        {
+            vm.ProductName = "";
+        }
 
 
         

@@ -126,10 +126,11 @@
         }
 
         //level function
-        function GetLevels() {
+        function GetLevels(query) {
          return   $http({
                 method: 'GET',
-                url: 'http://localhost:8057/api/Levels/GetLevels'
+                url: 'http://localhost:8057/api/Levels/GetLevels',
+                params:query
             });
         }
         function GetLevelById(id) {
@@ -150,10 +151,11 @@
         }
 
        // medium function
-        function GetMediums() {
+        function GetMediums(query) {
             return $http({
                 method: 'GET',
-                url: 'http://localhost:8057/api/Mediums/GetMediums'
+                url: 'http://localhost:8057/api/Mediums/GetMediums',
+                params:query
             });
         }
         function GetMediumsById(id) {
@@ -197,10 +199,11 @@
             });
         }
       //source function
-        function GetSources() {
+        function GetSources(query) {
          return   $http({
                 method: 'GET',
-                url: 'http://localhost:8057/api/Sources/GetSources'
+                url: 'http://localhost:8057/api/Sources/GetSources',
+                params:query
             });
         }
         function GetSourceById(id) {
@@ -250,10 +253,11 @@
 
         //StatusfUnction   
 
-        function GetStatuses() {
+        function GetStatuses(query) {
             return $http({
                 method: 'GET',
-                url: 'http://localhost:8057/api/Status/GetStatuses'
+                url: 'http://localhost:8057/api/Status/GetStatuses',
+                params:query
             });
         }
         function GetStatusById(id) {
@@ -275,10 +279,11 @@
         //DesignationsFunction 
      
         
-        function GetDesignations() {
+        function GetDesignations(query) {
             return $http({
                 method: 'GET',
-                url: 'http://localhost:8057/api/Designations/GetDesignations'
+                url: 'http://localhost:8057/api/Designations/GetDesignations',
+                params:query
             });
         }
         function GetDesignationById(id) {

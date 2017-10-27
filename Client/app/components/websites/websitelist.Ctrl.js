@@ -21,18 +21,31 @@
         vm.Search = Search;
         vm.SaveWebsites = SaveWebsites;
         vm.GetWebsiteById = GetWebsiteById;
-
-        vm.limit = 3;
+        //pagination sorting using odata
+        vm.limit = 2;
+        vm.query = {
+            '$top': vm.limit
+        };
         vm.limitChange = limitChange;
-        vm.query = { '$top': vm.limit };
-       
+        //limitchange
         function limitChange(limit)
         {
-            
             vm.query['$top'] = limit;
             Search();
         }
-        
+      
+       //WebsiteName       
+        vm.WebsiteName = "";
+        vm.websitechange = websitechange;
+        function websitechange(WebsiteName) {
+            console.log("WebsiteName", WebsiteName);
+            vm.query['$filter'] = "indexof(WebsiteName, '" + WebsiteName + "') ne -1";
+            Search();
+        }
+        //reset
+        vm.reset = reset;
+        function reset() { return vm.WebsiteName = "" }
+
 
       
 
@@ -50,7 +63,7 @@
 
         function Search()
         {
-            mainService.GetWebsites().then(
+            mainService.GetWebsites(vm.query).then(
                function (response) { vm.websites = response.data; console.log(vm.websites); },
                function (error) { console.log(error); });
         }
